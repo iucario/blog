@@ -60,7 +60,7 @@ module.exports = {
         }
       },
       fontFamily: {
-        mono: ["Reddit Mono", "Geist Mono", "IBM Plex Mono", "sans-serif"],
+        mono: ["Reddit Mono", "Geist Mono", "IBM Plex Mono", "system-ui", "sans-serif"],
       },
 
       typography: {
