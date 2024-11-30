@@ -24,6 +24,8 @@ draft: true
 其次，立刻下载 mod fix 这些烦人特效和画面摇晃。不知道 Atlus 内部怎么过的 Accessibility 这一关。
 逆天雪白的画面。下雪天气而已，有必要这么攻击玩家吗？
 
+https://github.com/Lyall/MetaphorFix
+
 ## Demo
 
 开头 10 个小时是很劝退的，相当于 Demo 放出来的部分吧。不知道为什么要一开始就放那么多动画，不让玩家操作。说到动画，不知道是哪家给做的动画，也太劣质了。

@@ -1,14 +1,14 @@
 ---
 title: FFMPEG cheatsheet
 description: FFMPEG cheatsheet
-pubDatetime: 2024-11-20T00:00:00Z
+pubDatetime: 2024-11-30T00:00:00Z
 modDatetime: 2024-11-30T00:00:00Z
 tags:
   - others
 draft: true
 ---
 
-# FFMPEG
+# FFMPEG Cheatsheet
 
 - Crop video spatially. w, h, Left-up position
     `ffmepg -i input.mp4 -vf "crop=400:500:0:0:" out.mp4`
