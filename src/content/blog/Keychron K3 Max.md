@@ -4,7 +4,7 @@ description: Configuring keymaps and shortcuts for the Keychron K3 Max keyboard 
 pubDatetime: 2024-11-30T00:00:00Z
 modDatetime: 2024-11-30T00:00:00Z
 tags:
-  - others
+  - tool
 ---
 
 I often navigate using shortcuts like Ctrl+B, Ctrl+F, Ctrl+N, and Ctrl+P on macOS. Unfortunately, Windows lacks equivalent shortcuts.
@@ -37,12 +37,14 @@ Windows
 After configuring, here are the key shortcuts I use across both macOS and Windows:
 
 Navigation:
+
 - Ctrl+B → Left
 - Ctrl+F → Right
 - Ctrl+N → Down
 - Ctrl+P → Up
 
 Editing:
+
 - Ctrl+K → Delete to the end of line
 - Ctrl+H → Delete left character
 - Ctrl+D → Delete right character

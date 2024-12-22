@@ -1,6 +1,6 @@
 ---
 title: 2024 Summary
-description: Games, Anime, TV shows and Movies I have played or watched that I found worth-noting in 2024. Also things I learned in 2024.
+description: Games, Anime, TV shows and Movies I have played or watched that I found worth-noting in 2024.
 pubDatetime: 2024-12-31T00:00:00Z
 modDatetime: 2024-12-31T00:00:00Z
 draft: true
@@ -9,6 +9,8 @@ tags:
 ---
 
 ## Game
+
+![steam replay 2024](../../assets/images/steam-replay-2024.webp)
 
 ### Metaphor Refantazio
 
@@ -44,7 +46,7 @@ Playing Baldur's Gate 3 again with my partner was much more fun than playing sol
 
 Aside from my partner being a bit clumsy at times, the journey was extremely relaxing and enjoyable.
 
-I love RPGs even more after work. They're truly relaxing. I don't need more stress outside of work.
+I love RPGs even more since working. They're truly relaxing. I don't need more stress outside of work.
 
 ### Valheim
 
@@ -57,6 +59,7 @@ Replayed it with my partner. This game is a great introduction for beginners ent
 ## Anime
 
 Good Anime. Including anime that started in 2023 but ended in 2024.
+Didn't have time to watch many anime this year.
 
 - らんま1/2
 - ダンダダン
