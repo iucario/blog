@@ -45,14 +45,14 @@ async function loadGoogleFonts(
 > {
   const fontsConfig = [
     {
-      name: "Reddit Mono",
-      font: "Reddit+Mono",
+      name: "DM Mono",
+      font: "DM+Mono",
       weight: 400,
       style: "normal",
     },
     {
-      name: "Reddit Mono",
-      font: "Reddit+Mono:wght@700",
+      name: "DM Mono",
+      font: "DM+Mono:wght@500",
       weight: 700,
       style: "bold",
     },
