@@ -7,6 +7,8 @@ export type FontOptions = {
   style: FontStyle | undefined;
 };
 
+export const GoogleFontUrl = "https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,400;0,500;1,400;1,500&display=swap";
+
 async function loadGoogleFont(
   font: string,
   text: string
