@@ -47,10 +47,6 @@ I love RPGs even more since working. They're truly relaxing. I don't need more s
 
 Played this with a friend I met online and really enjoyed it. I feel like playing more survival and construction games with friends.
 
-### It Takes Two
-
-Replayed it with my partner. This game is a great introduction for beginners entering the gaming world. Didn't finish it this time.
-
 ## Anime
 
 Good Anime. Including anime that started in 2023 but ended in 2024.
