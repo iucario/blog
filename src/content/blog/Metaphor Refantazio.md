@@ -1,14 +1,13 @@
 ---
 title: Metaphor Refantazio Review
 description: Metaphor Refantazio 《暗喻幻想》游玩体验
-pubDatetime: 2025-01-23T00:00:00Z
-modDatetime: 2025-01-23T00:00:00Z
+pubDatetime: 2024-12-27T00:00:00Z
+modDatetime: 2024-12-27T00:00:00Z
 tags:
   - gaming
-draft: true
+  - chinese
 ---
 
-# Metaphor: Refantazio Review
 
 冒险感还是很好的。玩进去了很上头。Partner 总是问 Metaphor 这么好玩吗？你玩 Metaphor 吧。
 
@@ -26,7 +25,7 @@ draft: true
 其次，立刻下载 mod fix 这些烦人特效和画面摇晃。不知道 Atlus 内部怎么过的 Accessibility 这一关。
 逆天雪白的画面。下雪天气而已，有必要这么攻击玩家吗？
 
-https://github.com/Lyall/MetaphorFix
+<https://github.com/Lyall/MetaphorFix>
 
 ## Demo
 
@@ -53,6 +52,9 @@ UI/UX 有点繁琐。因为需要来回切换看队友的职业技能和合体�
 迷宫少。
 大迷宫就 3 个。小迷宫 2 个。重复地牢我分为 3 种：爬塔、野外图和钻洞爬梯子的地牢。
 
+那么，我抱怨这么多缺点，为什么还能玩呢？因为就听角色大喊合体技能名字就很爽，RPG 升级就是爽。
+升级刷装备中间穿插着一点剧情，足够的动力了。
+
 ## 剧情
 
 如果有恋爱要素就更好了。
@@ -60,3 +62,5 @@ UI/UX 有点繁琐。因为需要来回切换看队友的职业技能和合体�
 小丑的剧情是真有点小丑。
 
 很喜欢日式王道 RPG 中追求理想的精神。
+
+游戏还没打完，最后一点点了，打完再更新。最近玩《博德之门3》去了。

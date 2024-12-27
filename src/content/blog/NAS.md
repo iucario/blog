@@ -30,6 +30,7 @@ On Linux and Mac symlink files are even easier. But I don't want to bother it. I
 
 The commands are really limited. Even missing many essential tools.
 
+Some handy commands:
 `uname -a`
 `busybox`
 `poweroff`

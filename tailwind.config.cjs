@@ -60,7 +60,7 @@ module.exports = {
         }
       },
       fontFamily: {
-        mono: ["DM Mono", "Geist Mono", "IBM Plex Mono", "system-ui", "sans-serif"],
+        mono: ["DM Mono", "Geist Mono", "IBM Plex Mono", "ui-sans-serif", "system-ui", "sans-serif"],
       },
 
       typography: {
