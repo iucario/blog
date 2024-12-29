@@ -74,3 +74,5 @@ TV and movies I watched and thought were good in 2024. Not necessarily limited t
 - Only Murders in the Building Season 3 & 4
 - Arcane Season 1 & 2
   I like the season 1 more.
+- Ludwig
+  Highly praised detective show. One classic trick an episode. It is often mentioned alongside _Moonlight Murders_. While I prefer the drama and characters in _Ludwig_, the tricks in _Moonlight Murders_ are more compelling. Both are highly entertaining shows in 2024.
