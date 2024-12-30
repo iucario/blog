@@ -1,10 +1,11 @@
 ---
 title: My first NAS
 description: QNAP TS464C. My first NAS. And It's great.
-pubDatetime: 2025-01-10T00:00:00Z
-modDatetime: 2025-01-10T00:00:00Z
+pubDatetime: 2025-01-20T00:00:00Z
+modDatetime: 2025-01-20T00:00:00Z
 tags:
-  - others
+  - gadget
+  - hardware
 ---
 
 QNAP TS464C

@@ -1,8 +1,8 @@
 ---
 title: Minecraft Quick Setup Manual
 description: Minecraft on AWS spot instances. Quick setup manual.
-pubDatetime: 2025-01-04T00:00:00Z
-modDatetime: 2025-01-04T00:00:00Z
+pubDatetime: 2025-02-04T00:00:00Z
+modDatetime: 2025-02-04T00:00:00Z
 tags:
     - gaming
 draft: true

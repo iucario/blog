@@ -3,7 +3,6 @@ title: 2024 Summary
 description: Games, Anime, TV shows and Movies I have played or watched that I found worth-noting in 2024.
 pubDatetime: 2024-12-31T00:00:00Z
 modDatetime: 2024-12-31T00:00:00Z
-draft: false
 tags:
   - Others
 ---

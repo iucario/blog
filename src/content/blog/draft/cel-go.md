@@ -1,14 +1,14 @@
 ---
 title: CEL Go
 description: Expression evaluation in Go
-pubDatetime: 2024-11-15T00:00:00Z
-modDatetime: 2024-11-15T00:00:00Z
+pubDatetime: 2025-11-15T00:00:00Z
+modDatetime: 2025-11-15T00:00:00Z
 tags:
-  - others
+  - software
+  - go
 draft: true
 ---
 
-# CEL Go
 
 ## The Problem of Variable Naming
 
