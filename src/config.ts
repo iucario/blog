@@ -6,7 +6,7 @@ export const SITE: Site = {
   profile: "https://github.com/iucario",
   desc: "Ziye's Blog",
   title: "Ziye's Blog",
-  ogImage: "astropaper-og.jpg",
+  ogImage: undefined,
   lightAndDarkMode: true,
   postPerIndex: 5,
   postPerPage: 10,
