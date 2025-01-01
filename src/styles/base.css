@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    font-size: 18px; /* custom */
+  }
+
   :root,
   html[data-theme="light"] {
     --color-fill: 251, 254, 251;
@@ -68,6 +72,12 @@
     @apply hidden;
   }
 
+  /* custom */
+  .prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    font-weight: 400;
+    font-size: 0.875rem;
+  }
+
   /* ===== scrollbar ===== */
   html {
     overflow-y: scroll;
@@ -102,9 +112,6 @@
     word-wrap: break-word;
   }
 
-
-
-
   pre > code {
     white-space: pre;
   }
@@ -127,10 +134,4 @@
   .focus-outline {
     @apply outline-2 outline-offset-1 outline-skin-fill focus-visible:no-underline focus-visible:outline-dashed;
   }
-}
-
-/* custom */
-.prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
-  font-weight: 400;
-  font-size: 0.875em;
 }
