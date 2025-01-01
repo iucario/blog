@@ -3,10 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  html {
     font-size: 18px; /* custom */
   }
-
   :root,
   html[data-theme="light"] {
     --color-fill: 251, 254, 251;
