@@ -38,6 +38,9 @@ Some handy commands:
 `reboot`
 `free -m`
 
+Change mod to 755 for all folders in current directory. To hide the background colors of the folders copied from Windows.\
+`find . -type d -exec chmod 755 {} +`
+
 Why entware is being recommended? I can download softwares directly. What is the advantage?
 
 ## Installing Essentials
@@ -68,69 +71,61 @@ Do remember to add `export TERM=XTERM` to `.zshrc`. Or the Backspace and many ke
 
 ## Script For Regex Renaming
 
+With Python3 installed I can do a lot of things.
+
 An example of adding a ".chi" before ".srt" so that Plex can recognize them as Chinese subtitles.
 
-`./rename.sh /tmp (.*).srt $1.chi.srt --dry-run`
+`python3 ~/rename.py /tmp '(.*).srt' '\1.chi.srt' --dry-run`
 
-```bash
-#!/bin/bash
+```py
+import os
+import re
+import sys
+import argparse
 
-# Function to display usage
-usage() {
-    echo "Usage: $0 <directory> <regex_pattern> <output_pattern> [--dry-run | -d]"
-    echo "  <directory>       The directory containing files to rename."
-    echo "  <regex_pattern>   Regex pattern to extract parts of filenames."
-    echo "  <output_pattern>  Output pattern for renaming files."
-    echo "                    Use placeholders like \1, \2 for captured groups."
-    echo "  --dry-run, -d     Preview the changes without renaming files."
-    exit 1
-}
+# Set up argument parser
+parser = argparse.ArgumentParser(description="Rename files in a directory using regex and output pattern.")
+parser.add_argument("directory", help="The directory containing files to rename.")
+parser.add_argument("regex_pattern", help="Regex pattern to extract parts of filenames.")
+parser.add_argument("output_pattern", help="Output pattern for renaming files, using placeholders like \\1, \\2.")
+parser.add_argument("--dry-run", "-d", action="store_true", help="Preview the changes without renaming files.")
 
-# Check if at least three arguments are provided
-if [ "$#" -lt 3 ]; then
-    usage
-fi
+args = parser.parse_args()
 
-DIRECTORY="$1"
-REGEX="$2"
-OUTPUT_PATTERN="$3"
-DRY_RUN=false
-
-# Check for optional dry-run argument
-if [ "$#" -eq 4 ]; then
-    if [ "$2" == "--dry-run" ] || [ "$2" == "-d" ]; then
-        DRY_RUN=true
-    else
-        usage
-    fi
-fi
+# Assign arguments to variables
+directory = args.directory
+regex_pattern = args.regex_pattern
+output_pattern = args.output_pattern
+dry_run = args.dry_run
 
 # Check if the directory exists
-if [ ! -d "$DIRECTORY" ]; then
-    echo "Error: Directory $DIRECTORY does not exist."
-    exit 1
-fi
+if not os.path.isdir(directory):
+    print(f"Error: Directory {directory} does not exist.")
+    sys.exit(1)
 
+# Compile the regex pattern
+try:
+    regex = re.compile(regex_pattern)
+except re.error as e:
+    print(f"Error: Invalid regex pattern. {e}")
+    sys.exit(1)
 
-for FILE in "$DIRECTORY"/*.mp4; do
-    # Extract parts using regex
-    if [[ "$FILE" =~ $REGEX ]]; then
-        NEW_NAME="$OUTPUT_PATTERN"
+# Iterate over files in the directory
+for filename in os.listdir(directory):
+    file_path = os.path.join(directory, filename)
+    match = regex.match(filename)
+    if match:
+        try:
+            new_name = re.sub(regex_pattern, output_pattern, filename)
+        except re.error as e:
+            print(f"Error in re.sub: {e}")
+            sys.exit(1)
 
-        # Replace $1, $2, etc., with captured groups
-        for ((i=1; i<${#BASH_REMATCH[@]}; i++)); do
-            NEW_NAME=${NEW_NAME//\$$i/${BASH_REMATCH[i]}}
-        done
-        
-        if [ "$DRY_RUN" = true ]; then
-            echo "Dry Run: rename '$FILE' to '$NEW_NAME'"
-        else
-            mv "$FILE" "$DIRECTORY/$NEW_NAME"
-            echo "Renamed: $FILE -> $NEW_NAME"
-        fi
-    else
-        echo "Filename does not match the expected pattern."
-        exit 1
-    fi
-done
+        new_path = os.path.join(directory, new_name)
+
+        if dry_run:
+            print(f"Dry Run: rename '{file_path}' to '{new_path}'")
+        else:
+            os.rename(file_path, new_path)
+            print(f"Renamed: {file_path} -> {new_path}")
 ```
