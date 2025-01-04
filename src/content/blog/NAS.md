@@ -41,7 +41,7 @@ Some handy commands:
 Change mod to 755 for all folders in current directory. To hide the background colors of the folders copied from Windows.\
 `find . -type d -exec chmod 755 {} +`
 
-Why entware is being recommended? I can download softwares directly. What is the advantage?
+Did some search online and I am curious why entware is being recommended? I can download softwares directly. What is the advantage?
 
 ## Installing Essentials
 
