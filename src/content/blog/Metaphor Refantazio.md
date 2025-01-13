@@ -2,7 +2,7 @@
 title: Metaphor Refantazio Review
 description: Metaphor Refantazio 《暗喻幻想》游玩体验
 pubDatetime: 2024-12-27T00:00:00Z
-modDatetime: 2024-12-27T00:00:00Z
+modDatetime: 2025-01-13T00:00:00Z
 tags:
   - gaming
   - chinese
@@ -59,7 +59,7 @@ UI/UX 有点繁琐。因为需要来回切换看队友的职业技能和合体�
 
 如果有恋爱要素就更好了。
 
-小丑的剧情是真有点小丑。
+小丑的剧情是真有点小丑。Edit: 不，后面发现也不是小丑。不过也挺搞笑的。
 
 很喜欢日式王道 RPG 中追求理想的精神。
 
