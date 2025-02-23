@@ -2,7 +2,7 @@
 import { LOCALE, SITE } from "@config";
 import "@styles/base.css";
 import { ViewTransitions } from "astro:transitions";
-import { GoogleFontUrl } from "../utils/loadGoogleFont.ts";
+import { PreloadFontUrl } from "../utils/loadGoogleFont.ts";
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
@@ -112,7 +112,7 @@ const structuredData = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href={GoogleFontUrl}
+      href={PreloadFontUrl}
       rel="preload"
       as="style"
       onload="this.onload=null; this.rel='stylesheet';"

@@ -4,7 +4,10 @@
 
 @layer base {
   html {
-    font-size: 18px; /* custom */
+    font-size: 18px;
+    @screen sm {
+      font-size: 16px;
+    }
   }
   :root,
   html[data-theme="light"] {

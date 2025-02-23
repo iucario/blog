@@ -26,7 +26,7 @@ export default function Datetime({
 }: Props) {
   return (
     <div
-      className={`flex items-center space-x-2 opacity-80 ${className}`.trim()}
+      className={`flex-none items-center space-x-2 opacity-80 ${className}`.trim()}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -50,8 +50,8 @@ export default function Datetime({
           pubDatetime={pubDatetime}
           modDatetime={modDatetime}
         />
-        {size === "lg" && <EditPost editPost={editPost} postId={postId} />}
       </span>
+      {size === "lg" && <EditPost editPost={editPost} postId={postId} />}
     </div>
   );
 }
@@ -67,15 +67,9 @@ const FormattedDatetime = ({ pubDatetime, modDatetime }: DatetimesProps) => {
     day: "numeric",
   });
 
-  const time = myDatetime.toLocaleTimeString(LOCALE.langTag, {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-
   return (
     <>
       <time dateTime={myDatetime.toISOString()}>{date}</time>
-      <span className="sr-only">&nbsp;at&nbsp;</span>
     </>
   );
 };

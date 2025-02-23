@@ -60,7 +60,8 @@ module.exports = {
         }
       },
       fontFamily: {
-        mono: ["DM Mono", "Geist Mono", "IBM Plex Mono", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono: ["Reddit Mono", "DM Mono", "Noto Sans SC", "ui-sans-serif", "system-ui", "sans-serif", "apple color emoji", 
+          "segoe ui emoji", "segoe ui symbol", "noto color emoji"],
       },
 
       typography: {
