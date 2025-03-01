@@ -75,7 +75,7 @@
   }
 
   /* custom */
-  .prose :where(code):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  .prose :where(code):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
     font-weight: 400;
     font-size: 0.875rem;
   }

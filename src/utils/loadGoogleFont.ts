@@ -7,12 +7,10 @@ export type FontOptions = {
   style: FontStyle | undefined
 }
 
-export const PreloadFontUrl = "https://fonts.googleapis.com/css2?family=Reddit+Mono:ital,wght@0,400;0,700;1,400;1,500&display=swap"
+export const PreloadFontUrl =
+  "https://fonts.googleapis.com/css2?family=Reddit+Mono:ital,wght@0,400;0,700;1,400;1,500&display=swap"
 
-async function loadGoogleFont(
-  font: string,
-  text: string
-): Promise<ArrayBuffer> {
+async function loadGoogleFont(font: string, text: string): Promise<ArrayBuffer> {
   const API = `https://fonts.googleapis.com/css2?family=${font}&text=${encodeURIComponent(text)}`
 
   const css = await (
@@ -24,9 +22,7 @@ async function loadGoogleFont(
     })
   ).text()
 
-  const resource = css.match(
-    /src: url\((.+)\) format\('(opentype|truetype)'\)/
-  )
+  const resource = css.match(/src: url\((.+)\) format\('(opentype|truetype)'\)/)
 
   if (!resource) throw new Error("Failed to download dynamic font")
 
@@ -41,9 +37,7 @@ async function loadGoogleFont(
 
 async function loadGoogleFonts(
   text: string
-): Promise<
-  Array<{ name: string; data: ArrayBuffer; weight: number; style: string }>
-> {
+): Promise<Array<{ name: string; data: ArrayBuffer; weight: number; style: string }>> {
   const fontsConfig = [
     {
       name: "Reddit Mono",

@@ -4,10 +4,9 @@ description: Minecraft on AWS spot instances. Quick setup manual.
 pubDatetime: 2025-02-04T00:00:00Z
 modDatetime: 2025-02-04T00:00:00Z
 tags:
-    - gaming
+  - gaming
 draft: true
 ---
-
 
 ## Common Steps
 

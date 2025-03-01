@@ -9,7 +9,6 @@ draft: false
 description: Setting up my blog again
 ---
 
-
 Using Astro Paper.
 
 日本語が食べられません

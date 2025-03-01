@@ -1,6 +1,6 @@
-import { SITE } from "@config";
-import { glob } from "astro/loaders";
-import { defineCollection, z } from "astro:content";
+import { SITE } from "@config"
+import { glob } from "astro/loaders"
+import { defineCollection, z } from "astro:content"
 
 const blog = defineCollection({
   type: "content_layer",
@@ -31,6 +31,6 @@ const blog = defineCollection({
         })
         .optional(),
     }),
-});
+})
 
-export const collections = { blog };
+export const collections = { blog }

@@ -7,7 +7,6 @@ modDatetime: 2025-03-04
 draft: true
 ---
 
-
 I am picky about microphones. And I guess other people may mind my microphone vice versa.
 So I try my best to have a crystal clear voice in online meetings and games' voice chat.
 
@@ -23,7 +22,7 @@ Link
 
 Only comparing the headsets and earphones. Standalone microphones excluded because not convinient for office.
 
-Gaming headset  > Wired earphone == Macbook's microphone > bluetooth headset > bluetooth earphone.
+Gaming headset > Wired earphone == Macbook's microphone > bluetooth headset > bluetooth earphone.
 
 Headsets with microphone > headsets with hidden microphone.
 

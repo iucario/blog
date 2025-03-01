@@ -9,7 +9,6 @@ tags:
 draft: true
 ---
 
-
 ## The Problem of Variable Naming
 
 Starts with a number.

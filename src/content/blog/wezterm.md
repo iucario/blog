@@ -1,6 +1,6 @@
 ---
 pubDatetime: 2025-01-13T12:20:20+09:00
-modDatetime: 
+modDatetime:
 title: WezTerm Is Amazing
 tags:
   - tool
