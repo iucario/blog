@@ -2,7 +2,7 @@
 title: 3D Motion Sickness
 description: Games shouldn't prioritize excessive visual detail at the cost of performance and comfort
 pubDatetime: 2025-02-24
-modDatetime: 2025-02-24
+modDatetime: 2025-03-01
 tags:
   - gaming
 ---
@@ -22,5 +22,7 @@ My takeaway: Video games should focus on art and interactivity, not excessive vi
 Another example is _Cyberpunk 2077_. It is a game that has to go for realism.
 With its dynamic details and open world, the unstable frame rate makes it hard for me to play for more than two hours at a time. Many of those details are just for show, meant to enhance immersion.
 However, when there's too much distracting visual clutter and the frame rate can't stay at a stable 60 FPS, I can't immerse myself at all.
+
+_Monster Hunter Wilds_ is a different story. The game has low texture as well as low, unstable FPS. Capcom simply does not have sufficient skill.
 
 Games should reduce unnecessary visual details, prioritize frame rate, and use a unique art style to create immersion—that's the right path.
