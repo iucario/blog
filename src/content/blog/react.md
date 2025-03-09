@@ -3,7 +3,7 @@ title: Upgrading React Exposes Problems But That’s a Good Thing
 slug: upgrading-react
 description: 最近的错误处理中学到的事情
 pubDatetime: 2025-03-07T00:00:00Z
-modDatetime: 2025-03-07T00:00:00Z
+modDatetime: 2025-03-09T00:00:00Z
 tags:
   - front-end
   - react
@@ -27,7 +27,7 @@ tags:
 
 这个 PR 还没 merge 呢，在一边加 unit test 一边修改组件逻辑的同时发现了另一个问题。是更新 UI Lib 带来的。具体来说是 Select 无法使用。我尝试了更换 Lib ，结果 MUI 的 Select 只要一点击就无限循环。我还认真看了所用的 UI Lib 的代码、打开了 StoryBook。但是找不到我的代码的原因。
 
-我发现 UI Lib 用的 React 是 18 || 19。Package.json 是这样写的。我想也许更新 React 能有用，试了一下果然 Select 的问题解决了。于是 commit 了。
+我发现 UI Lib 用的 React 是 18 || 19。Package.json 是这样写的，并且错误信息提到了 FlushSync 这个 React 19 的新特性。我想也许更新 React 能有用，试了一下果然 Select 的问题解决了。于是 commit 了。\
 与新人讨论了一下，也在 commit message 里写了无可奈何升级的 React 19 以及做了一些必要的改动。让新人 review 了一下感觉没问题，简陋的测试也通过了，于是 merge 了。
 
 然而这里一切都看起来很美好圆满解决的时候，还有危机隐藏着。
@@ -45,12 +45,15 @@ tags:
 我删除了引入 MUI 和其他 Lib 的代码，然后错误没有消失。这时我意识到是组件的代码逻辑本身有问题。
 于是我仔细看了代码，首先删除了 useEffect，因为通常 state 更新处理不当容易导致 Maximum Recursion。果然错误消失了。
 
-简单解释这个错误。改的部分称为 child 吧，接受 2 个参数，它从 parent 接受 **data** 显示，和一个 **update** 数据到 parent 的 function. 这是很正常的 React 的操作，然而这个 child 的问题是它会在检测到 data 更新时进行 validation，然后把 validation 结果传回 parent。怎么传？它把 valid boolean 放进 data 里然后 update。
+简单解释这个错误。改的部分称为 child 吧，接受 2 个参数，它从 parent 接受 **data** 显示，和一个 **update**  function 更新数据到 parent. 这是很正常的 React 的操作。
+
+然而这个 child 的问题是它会在检测到 data 更新时进行 validation，然后把 validation 结果传回 parent。怎么传？它把 valid boolean 放进 data 里然后 **update**。\
 Parent 给 child data，child validate data 后更新 valid 与否，更新造成 parent 数据更新尽管数据的值不一定变，parent 传入新的 data 造成 child re-render。无限循环。
 
-发现问题后我立刻在群里汇报，然后开始更改。更改并没有找 bug 那么简单，因为 parent 需要 validate 但是 parent 自己没有 validate 的逻辑，必须从 child 里获得。我不想更改太多文件，以免又造成什么意外错误。最终选择了用 useRef。
+发现问题后我立刻在群里汇报，然后开始更改。更改并没有找 bug 那么简单，因为 parent 需要 validate 但是 parent 自己没有 validate 的逻辑，必须让 child 计算更新 state 获得。\
+我不想更改太多文件，以免又造成什么意外错误。暂时选择了用 useRef，感觉不够保险。最终还是从根源解决问题，直接在 parent 里 validate.
 
-加上其他一些小修改，Push 代码，问题解决，就等另外 2 人的 review 了。这次在 merge 前我决定每种页面一定要都检查一遍。
+加上其他一些小修改，Push 代码，问题解决，就等另外 2 人的 review 了。这次在 merge 前我决定每种页面一定要都检查一遍，并且加上尽量完整的单元测试。这次的错误如果单元测试随便测一下也不至于那么晚才发现。
 
 ## Murphy's Law
 
@@ -58,8 +61,8 @@ Parent 给 child data，child validate data 后更新 valid 与否，更新造�
 
 DatePicker 组件是老人写的，1 个月前我就发现在操作上有些 glitch，仿佛数据没有更新或是更新太快，有种卡卡的感觉。当时我没有时间解决它，这个问题也没有被 QA 发现所以没有得到重视。也许这次这个问题再次被交给我是因为我有准备吧，也是一种天意。
 
-事实上，React 18 为什么没有彻底暴露这个问题倒是让我不明白。升级到 React 19 让本来的小问题变成了让页面爆炸的大问题，其实是一件好事。
-这下 2 个问题都一起解决了，我改了之后就不再有卡卡的感觉了。也许卡就是因为之前页面也有一定程度的循环占用了很多资源吧。
+事实上，React 18 为什么没有彻底暴露这个问题倒是让我不明白。升级到 React 19 让本来的小问题变成了让页面爆炸的大问题，其实是一件好事。\
+这下 2 个问题都一起解决了，我改了之后就不再有卡卡的感觉了。也许卡就是因为之前页面也有一定程度的循环占用了很多资源吧。切到我接手前端前的 commit 加入 console.log 发现，无限循环早就存在，证明它的逻辑根本上就是错误的。
 
 虽然老人的发言都很正确，一个系统能用就不要动。但是趁现在产品还没有上线，此时不重构升级，之后更加没有机会，风险更大。我始终相信只要项目的架构设计健全了，Developer 也更不容易犯错，更好写出高质量的软件。我实在无法放任一个还没有发布的项目就已经是屎山。
 

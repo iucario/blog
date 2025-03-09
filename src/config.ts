@@ -8,7 +8,7 @@ export const SITE: Site = {
   title: "Ziye's Blog",
   ogImage: undefined,
   lightAndDarkMode: true,
-  postPerIndex: 5,
+  postPerIndex: 6,
   postPerPage: 10,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
   showArchives: true,
