@@ -38,7 +38,8 @@ Softwares that can be installed via Homebrew
 ```bash
 brew install obsidian \
   firefox \
-  scroll-reverser
+  scroll-reverser \
+  monitorcontrol
 
 brew install mpv --cask
 ```
