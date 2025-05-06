@@ -9,6 +9,7 @@ tags:
   - react
   - refactor
   - troubleshooting
+  - chinese
 ---
 
 ## Background
