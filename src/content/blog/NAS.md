@@ -1,8 +1,8 @@
 ---
 title: QNAP TS464C
-description: My first NAS. And It's great.
-pubDatetime: 2025-02-10T00:00:00Z
-modDatetime: 2025-02-10T00:00:00Z
+description: My first NAS. And It's great. Just do use a hard disk dedicated for NAS
+pubDatetime: 2025-02-10
+modDatetime: 2025-05-09
 tags:
   - gadget
   - hardware
@@ -11,12 +11,12 @@ tags:
 QNAP TS464C\
 Bought from China. Can't believe the sum of price + shipping fee was still significantly cheaper than buying it in Japan.
 
-What do I use it for?
+## Before Anything
 
-Primarily as a media server and for storage.
-Not touching remote access now. I don't need it.
+Buy a hard disk dedicated for NAS.
 
-As for UPS. I have not met a power outage ever in Japan for the past 4 years. So I don't worry much about power outages. I don't save valuable files only on NAS anyway. A UPS is not in urgent need.
+My hard disk died after serving 5 months. It was for desktops but I let it run 24/7 in my NAS.
+It was a 8TB Seagate BarraCuda. I should have bought a Seagate Ironwolf level or above disk.
 
 ## Why do I need a NAS?
 
@@ -26,25 +26,38 @@ It's time to separate seeding files and media server libraries.
 On Windows, I can hard link files in batch to achieve this. But the command is a script in cmd.exe.
 On Linux and Mac symlink files are even easier. But I don't want to bother it. I need a large storage anyway.
 
+What do I use it for?
+
+Primarily as a media server and for storage.
+Not touching remote access now. I don't need it.
+
+As for UPS. I have not met a power outage ever in Japan for the past 4 years. So I don't worry much about power outages. I don't save valuable files only on NAS anyway. A UPS is not in urgent need.
+
 ## QNAP Terminal Commands
 
 The commands are really limited. Even missing many essential tools.
 
-Some handy commands:
-`uname -a`
-`busybox`
-`poweroff`
-`reboot`
-`free -m`
+Change mod to 755 for all folders in current directory. To hide the background colors for folders copied from Windows.
 
-Change mod to 755 for all folders in current directory. To hide the background colors of the folders copied from Windows.\
 `find . -type d -exec chmod 755 {} +`
-
-Did some search online and I am curious why entware is being recommended? I can download softwares directly. What is the advantage?
 
 ## Installing Essentials
 
-Download Python 3 and Oh my zsh from QNAP app center.
+Download from QNAP app center.
+
+- Python 3
+- Oh my zsh
+- Git
+
+Git and ZSH can be install from third party App repository: MyQNAP Repo.
+
+### Zsh
+
+After installing OMZ, run `zsh`, the prompt became: `[\u@\h \W]\$`. `.zshrc` was empty. Have to go to <https://ohmyz.sh/#install>.
+
+Do remember to add `export TERM=XTERM` to `.zshrc`. Or the Backspace and many keys will not work. Seems to be some problem caused by colors.
+
+### Python
 
 SSH to an admin account.
 
@@ -55,7 +68,9 @@ I prefer more explicit commands:
 
 ```bash
 _PYTHON3_QPKG_ROOT=$(/sbin/getcfg "Python3" Install_Path -f /etc/config/qpkg.conf)
+
 _PYTHON3_QPKG_BIN="${_PYTHON3_QPKG_ROOT}/opt/python3/bin"
+
 /bin/ln -sf "${_PYTHON3_QPKG_BIN}/python3" "${_PYTHON3_QPKG_BIN}/python"
 
 echo 'PATH=$PATH:'$_PYTHON3_QPKG_BIN >> .zshrc
@@ -64,17 +79,15 @@ source .zshrc
 python3 --version
 ```
 
-Git and ZSH can be install from third party App repository: MyQNAP Repo.
-
-Do remember to add `export TERM=XTERM` to `.zshrc`. Or the Backspace and many keys will not work. Seems to be some problem caused by colors.
-
 ## Script For Regex Renaming
-
-With Python3 installed I can do a lot of things.
 
 An example of adding a ".chi" before ".srt" so that Plex can recognize them as Chinese subtitles.
 
 `python3 ~/rename.py /tmp '(.*).srt' '\1.chi.srt' --dry-run`
+
+Patterns for renaming most videos\
+Input: `.*\[(\d\d)\].*(mkv|ass)`\
+Output: `Anime.S01E\1.\2`
 
 ```py
 import os
@@ -83,11 +96,11 @@ import sys
 import argparse
 
 # Set up argument parser
-parser = argparse.ArgumentParser(description="Rename files in a directory using regex and output pattern.")
-parser.add_argument("directory", help="The directory containing files to rename.")
-parser.add_argument("regex_pattern", help="Regex pattern to extract parts of filenames.")
-parser.add_argument("output_pattern", help="Output pattern for renaming files, using placeholders like \\1, \\2.")
-parser.add_argument("--dry-run", "-d", action="store_true", help="Preview the changes without renaming files.")
+parser = argparse.ArgumentParser(description="Rename files in a directory using regex.")
+parser.add_argument("directory", help="The directory containing files")
+parser.add_argument("regex_pattern", help="Regex pattern for input")
+parser.add_argument("output_pattern", help="Output pattern, use placeholders like \\1, \\2.")
+parser.add_argument("-d", "--dry-run", action="store_true", help="Preview the changes")
 
 args = parser.parse_args()
 
@@ -110,21 +123,23 @@ except re.error as e:
     sys.exit(1)
 
 # Iterate over files in the directory
-for filename in os.listdir(directory):
-    file_path = os.path.join(directory, filename)
+for filename in sorted(os.listdir(directory)):
     match = regex.match(filename)
-    if match:
-        try:
-            new_name = re.sub(regex_pattern, output_pattern, filename)
-        except re.error as e:
-            print(f"Error in re.sub: {e}")
-            sys.exit(1)
+    if not match:
+        continue
 
-        new_path = os.path.join(directory, new_name)
+    try:
+        new_name = re.sub(regex_pattern, output_pattern, filename)
+    except re.error as e:
+        print(f"Error in re.sub: {e}")
+        sys.exit(1)
 
-        if dry_run:
-            print(f"Dry Run: rename '{file_path}' to '{new_path}'")
-        else:
-            os.rename(file_path, new_path)
-            print(f"Renamed: {file_path} -> {new_path}")
+    new_path = os.path.join(directory, new_name)
+
+    file_path = os.path.join(directory, filename)
+    if dry_run:
+        print(f"Dry Run: rename '{file_path}' to '{new_path}'")
+    else:
+        os.rename(file_path, new_path)
+        print(f"Renamed: {file_path} -> {new_path}")
 ```
