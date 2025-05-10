@@ -1,6 +1,6 @@
 ---
-pubDatetime: 2025-01-13T12:20:20+09:00
-modDatetime:
+pubDatetime: 2025-01-13
+modDatetime: 2025-01-13
 title: WezTerm Is Amazing
 tags:
   - tool
@@ -26,6 +26,8 @@ It even comes with color themes and fonts!
 ## My Config
 
 I am using [Sarasa Mono SC](https://github.com/be5invis/Sarasa-Gothic) as fallback Chiniese font.
+
+`$HOME/.wezterm.lua`
 
 ```lua
 local wezterm = require 'wezterm'
