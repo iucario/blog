@@ -1,6 +1,6 @@
 ---
 title: QNAP TS464C
-description: My first NAS. And It's great. Just do use a hard disk dedicated for NAS
+description: My first NAS. And It's great. Keep it in mind to use a hard disk dedicated for NAS
 pubDatetime: 2025-02-10
 modDatetime: 2025-05-09
 tags:
