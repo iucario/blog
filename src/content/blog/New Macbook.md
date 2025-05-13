@@ -57,7 +57,7 @@ cd dotfiles
 ## Develop
 
 ```bash
-brew install gh go golangci-lint
+brew install gh go golangci-lint tlrc
 ```
 
 ## Fonts
@@ -65,5 +65,6 @@ brew install gh go golangci-lint
 ```bash
 brew install font-0xproto font-iosevka-nerd-font font-geist-mono \
   font-inconsolata-lgc-nerd-font font-jetbrains-mono \
-  font-sofia-sans font-noto-sans-jp font-noto-sans-sc
+  font-sofia-sans font-noto-sans-jp font-noto-sans-sc \
+  font-adwaita font-symbols-only-nerd-font
 ```
