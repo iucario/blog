@@ -1,8 +1,10 @@
 ---
 title: Fish Shell
 pubDatetime: 2025-05-13
-modDatetime: 2025-05-13
+modDatetime: 2025-06-08
 description: Fish -- friendly interactive shell
+tags:
+  - terminal
 ---
 
 <https://fishshell.com/docs/current/index.html>
