@@ -10,6 +10,8 @@ export type FontOptions = {
 export const PreloadFontUrl =
   "https://fonts.googleapis.com/css2?family=Reddit+Mono:ital,wght@0,400;0,700;1,400;1,500&display=swap"
 
+export const PreloadCJKFont = "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap"
+
 async function loadGoogleFont(font: string, text: string): Promise<ArrayBuffer> {
   const API = `https://fonts.googleapis.com/css2?family=${font}&text=${encodeURIComponent(text)}`
 

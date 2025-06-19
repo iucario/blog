@@ -60,8 +60,19 @@ module.exports = {
         }
       },
       fontFamily: {
-        mono: ["Reddit Mono", "Noto Sans SC", "ui-sans-serif", "system-ui", "sans-serif", "apple color emoji", 
-          "segoe ui emoji", "segoe ui symbol", "noto color emoji"],
+        mono: [
+          "Reddit Mono",
+          "Noto Sans SC",
+          "Microsoft YaHei",
+          "Yu Gothic",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+          "apple color emoji",
+          "segoe ui emoji",
+          "segoe ui symbol",
+          "noto color emoji"
+        ],
       },
 
       typography: {

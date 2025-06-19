@@ -2,9 +2,10 @@
 import { LOCALE, SITE } from "@config"
 import "@styles/base.css"
 import { ClientRouter } from "astro:transitions"
-import { PreloadFontUrl } from "../utils/loadGoogleFont.ts"
+import { PreloadCJKFont, PreloadFontUrl } from "../utils/loadGoogleFont.ts"
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION
+
 
 export interface Props {
   title?: string
@@ -29,6 +30,9 @@ const {
   modDatetime,
   scrollSmooth = false,
 } = Astro.props
+
+// Check if content has CJK characters
+const hasCJK = /[\u4E00-\u9FFF\u3040-\u30FF\u3400-\u4DBF]/.test(title + description)
 
 const socialImageURL = new URL(ogImage ?? SITE.ogImage ?? "og.png", Astro.url.origin).href
 
@@ -99,7 +103,15 @@ const structuredData = {
       onload="this.onload=null; this.rel='stylesheet';"
       crossorigin
     />
-
+    {hasCJK && (
+      <link
+        href={PreloadCJKFont}
+        rel="preload"
+        as="style"
+        onload="this.onload=null; this.rel='stylesheet';"
+        crossorigin
+      />
+    )}
     <meta name="theme-color" content="" />
 
     {
