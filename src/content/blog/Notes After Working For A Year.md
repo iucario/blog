@@ -1,7 +1,7 @@
 ---
 title: Notes After Working For A Year
 pubDatetime: 2025-04-26
-modDatetime: 2025-04-26
+modDatetime: 2025-06-20
 description: What I learned over the first year's working experience
 tags:
   - others
@@ -27,6 +27,10 @@ Team members are super friendly. They are happy to offer help to anyone, newcome
 
 My manager and upper managers are really nice people. They are practical and familiar to technology because they were engineers before being managers.
 I have seen how dumb decisions non-technical and ignorant managers can make. I am so glad that managers in my department are also good programmers.
+
+Big shoutout to my mentor! I am really grateful to have a knowledgeable and friendly mentor.
+My mentor taught me a LOT, including Golang, Jenkins, Git practices, code reviewing, etc.
+I think my mentor is the _best_ engineer and he is a role model that I look up to.
 
 ## Projects
 
@@ -65,3 +69,5 @@ Error handling and logging are critical to monitoring. I now think about how the
 I try to squeeze every bit of resources out of it and optimize the code for better QPS.  It is truly rewarding to see better results from the stress tests.
 
 It is a pleasure working in the team.
+
+Yet just working hard is not going to get myself much reward. I must present my output to managers, every little things. I learned it the _hard way_.
