@@ -2,9 +2,12 @@
 title: My Keymap Configuration and Shortcuts
 description: Configuring keymaps and shortcuts for the Keychron K3 Max keyboard on Windows.
 pubDatetime: 2024-11-30T00:00:00Z
-modDatetime: 2024-11-30T00:00:00Z
+modDatetime: 2025-06-22
 tags:
   - tool
+  - keyboard
+  - keychron
+  - gadget
 ---
 
 I often navigate using shortcuts like Ctrl+B, Ctrl+F, Ctrl+N, and Ctrl+P on macOS. Unfortunately, Windows lacks equivalent shortcuts.
