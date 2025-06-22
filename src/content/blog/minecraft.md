@@ -1,12 +1,16 @@
 ---
 title: Minecraft Quick Setup Manual
-description: Minecraft on AWS spot instances. Quick setup manual.
-pubDatetime: 2025-02-04T00:00:00Z
-modDatetime: 2025-02-04T00:00:00Z
+description: Minecraft with my favorite mods on AWS spot instances. Quick setup manual.
+pubDatetime: 2025-06-22
+modDatetime: 2025-06-22
 tags:
   - gaming
-draft: true
+  - minecraft
 ---
+
+Occasionally I play minecraft with friends. To save money I run the server on AWS spot instance with backups from S3 or local.
+
+The blog documents the setup process for my own reference.
 
 ## Common Steps
 
@@ -20,7 +24,7 @@ seed 6443427340231861795
 
 Install dependencies
 
-```shell
+```sh
 sudo apt update;
 sudo apt upgrade -y;
 sudo apt install -y openjdk-21-jdk;
@@ -28,7 +32,7 @@ sudo apt install -y unzip zip;
 sudo ln -sf /usr/share/zoneinfo/Japan /etc/localtime
 ```
 
-```shell
+```sh
 mkdir mc;
 cd mc;
 curl -OJ https://meta.fabricmc.net/v2/versions/loader/1.20.6/0.15.11/1.0.1/server/jar;
@@ -42,7 +46,7 @@ sed -i '/eula=false/c\eula=true' eula.txt;
 
 Create backup script
 
-```shell
+```sh
 touch backup.sh;
 chmod u+x backup.sh;
 echo 'name=world-$(date +"%Y-%m-%dT%H-%M-%SZ").zip' >> backup.sh;
@@ -85,8 +89,11 @@ t_and_t-1.13.1.jar
 ### Start Server
 
 Better use tmux
-`tmux`
-`java -Xmx4G -jar fabric-server-mc.1.20.6-loader.0.15.11-launcher.1.0.1.jar nogui`
+
+```sh
+tmux
+java -Xmx4G -jar fabric-server-mc.1.20.6-loader.0.15.11-launcher.1.0.1.jar nogui
+```
 
 ## Forge Server
 
@@ -138,15 +145,15 @@ sudo ln -sf /usr/share/zoneinfo/Japan /etc/localtime
 
 <https://legacy.curseforge.com/minecraft/mc-mods/the-lost-cities>
 
-服务器的设置比较刁钻，需要复制本地的配置。然后 server.properties 里设置 level-type=lostcities 就行。
+The server configuration is tricky, so you need to copy the local configuration. Then set `level-type=lostcities` in `server.properties`.
 
 ## 1.16.5 End Traveller
 
 ### Bugs
 
-目睹玩家死亡会游戏崩溃。猜测与掉落相关。
+Witnessing the player's death will crash the game. Speculated to be related to the drop.
 
-站在 Zombie Extreme 货物架上几秒会判定浮空，提示服务器未开启飞行，被踢出游戏。
+If you stand on the Zombie Extreme cargo rack for a few seconds, you will be judged as floating. It will prompt you that flying is not enabled on the server and you will be kicked out of the game.
 
 KALE
 Waiting for scan to complete
@@ -156,8 +163,8 @@ Constructing 107 mods
 
 ### Config
 
-血月时长很短，不知道调错了什么。
+The _blood moon_ is very short, I don't know what went wrong.
 
-Born in chaos 被虫蛀的钻石矿，有点打击人，关掉。
+_Born in chaos_ creates diamond mine infested by insects. It's a bit discouraging, turn it off.
 
-tac 子弹应该有配方才对，不能合成太蠢。
+There should be a recipe for _tac_ bullets, it's not fun if they can not be forged.
