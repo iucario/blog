@@ -2,7 +2,7 @@
 title: NIZ Micro 84
 description: Niz Micro 84 Bluetooth review from a programmer's perspective.
 pubDatetime: 2025-07-11
-modDatetime: 2025-07-11
+modDatetime: 2025-07-12
 tags:
   - keyboard
   - gadget
@@ -13,8 +13,9 @@ I finally own a electro-capacitive keyboard. Niz Micro 84.
 It has a 35g of pressure switch and is a real pleasure to type on. PBT keycaps, great. It is also programmable, of course with some limits.
 The model I bought supports Bluetooth and USB receiver.
 
-![alt text](../../assets/images/niz-1.jpg)
-![alt text](../../assets/images/niz-2.jpg)
+![niz](../../assets/images/niz-1.jpg)
+![niz](../../assets/images/niz-2.jpg)
+Images credit to _Kani_.
 
 The manuals, firmware and software are officially provided via Google Cloud. They look suspicious but they are official.
 
