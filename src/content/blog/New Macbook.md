@@ -18,7 +18,6 @@ Download from official sites
 - Homebrew
 - Oh-My-Zsh
 - Rectangle
-- Scroll Reverser
 - Notion
 - VSCode
 - Discord
@@ -30,6 +29,7 @@ App Store
 - Xcode
 - OneDrive
 - LocalSend
+- Infuse
 
 ## Homebrew
 
@@ -58,6 +58,12 @@ cd dotfiles
 
 ```bash
 brew install gh go golangci-lint tlrc
+
+brew install python@3.13
+
+brew install fish starship
+
+brew install docker colima
 ```
 
 ## Fonts
@@ -68,3 +74,8 @@ brew install font-0xproto font-iosevka-nerd-font font-geist-mono \
   font-sofia-sans font-noto-sans-jp font-noto-sans-sc \
   font-adwaita font-symbols-only-nerd-font
 ```
+
+Maple font mono nerd font Chinese. Build and download from official site with my preferences.
+<https://font.subf.dev/en/playground/>
+
+SF mono and SF pro <https://developer.apple.com/fonts/>
