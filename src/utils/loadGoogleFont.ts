@@ -1,19 +1,14 @@
-import type { FontStyle, FontWeight } from "satori"
-
-export type FontOptions = {
-  name: string
-  data: ArrayBuffer
-  weight: FontWeight | undefined
-  style: FontStyle | undefined
-}
-
 export const PreloadFontUrl =
   "https://fonts.googleapis.com/css2?family=Reddit+Mono:ital,wght@0,400;0,700;1,400;1,500&display=swap"
 
 export const PreloadCJKFont = "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap"
 
-async function loadGoogleFont(font: string, text: string): Promise<ArrayBuffer> {
-  const API = `https://fonts.googleapis.com/css2?family=${font}&text=${encodeURIComponent(text)}`
+async function loadGoogleFont(
+  font: string,
+  text: string,
+  weight: number
+): Promise<ArrayBuffer> {
+  const API = `https://fonts.googleapis.com/css2?family=${font}:wght@${weight}&text=${encodeURIComponent(text)}`
 
   const css = await (
     await fetch(API, {
@@ -24,7 +19,9 @@ async function loadGoogleFont(font: string, text: string): Promise<ArrayBuffer> 
     })
   ).text()
 
-  const resource = css.match(/src: url\((.+)\) format\('(opentype|truetype)'\)/)
+  const resource = css.match(
+    /src: url\((.+?)\) format\('(opentype|truetype)'\)/
+  )
 
   if (!resource) throw new Error("Failed to download dynamic font")
 
@@ -33,13 +30,15 @@ async function loadGoogleFont(font: string, text: string): Promise<ArrayBuffer> 
   if (!res.ok) {
     throw new Error("Failed to download dynamic font. Status: " + res.status)
   }
-  const fonts: ArrayBuffer = await res.arrayBuffer()
-  return fonts
+
+  return res.arrayBuffer()
 }
 
 async function loadGoogleFonts(
   text: string
-): Promise<Array<{ name: string; data: ArrayBuffer; weight: number; style: string }>> {
+): Promise<
+  Array<{ name: string; data: ArrayBuffer; weight: number; style: string }>
+> {
   const fontsConfig = [
     {
       name: "Reddit Mono",
@@ -49,25 +48,25 @@ async function loadGoogleFonts(
     },
     {
       name: "Reddit Mono",
-      font: "Reddit+Mono:wght@700",
+      font: "Reddit+Mono",
       weight: 700,
       style: "bold",
     },
     {
       name: "Reddit Mono",
-      font: "Reddit+Mono:wght@400",
+      font: "Reddit+Mono:wght",
       weight: 400,
       style: "italic",
     },
     {
       name: "Noto Sans SC",
-      font: "Noto+Sans+SC:wght@400",
+      font: "Noto+Sans+SC:wght",
       weight: 400,
       style: "normal",
     },
     {
       name: "Noto Sans SC",
-      font: "Noto+Sans+SC:wght@700",
+      font: "Noto+Sans+SC:wght",
       weight: 700,
       style: "bold",
     },
@@ -75,7 +74,7 @@ async function loadGoogleFonts(
 
   const fonts = await Promise.all(
     fontsConfig.map(async ({ name, font, weight, style }) => {
-      const data = await loadGoogleFont(font, text)
+      const data = await loadGoogleFont(font, text, weight)
       return { name, data, weight, style }
     })
   )
