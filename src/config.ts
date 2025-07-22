@@ -1,6 +1,4 @@
-import type { Site, SocialObjects } from "./types"
-
-export const SITE: Site = {
+export const SITE = {
   website: "https://www.ziye.dev", // replace this with your deployed domain
   author: "Ziye",
   profile: "https://github.com/iucario",
@@ -12,17 +10,18 @@ export const SITE: Site = {
   postPerPage: 10,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
   showArchives: true,
+  showBackButton: true, // show back button in post detail
   editPost: {
     url: "https://github.com/iucario/blog/edit/main/src/content/blog",
-    text: "Suggest Edit",
-    appendFilePath: true,
+    text: "Edit Page",
+    enabled: true,
   },
-}
-
-export const LOCALE = {
-  lang: "en", // html lang code. Set this empty and default will be "en"
-  langTag: ["en-EN", "zh-CN", "ja-JP"], // BCP 47 Language Tags. Set this empty [] to use the environment default
+  dynamicOgImage: true,
+  dir: "ltr", // "rtl" | "auto"
+  lang: "en",
+  timezone: "Asia/Tokyo",
 } as const
+
 
 export const LOGO_IMAGE = {
   enable: false,
@@ -30,18 +29,3 @@ export const LOGO_IMAGE = {
   width: 216,
   height: 46,
 }
-
-export const SOCIALS: SocialObjects = [
-  {
-    name: "Github",
-    href: "https://github.com/iucario",
-    linkTitle: "Ziye on Github",
-    active: true,
-  },
-  {
-    name: "LinkedIn",
-    href: "https://www.linkedin.com/in/ziye-r-3a7553236",
-    linkTitle: "Ziye on LinkedIn",
-    active: true,
-  }
-]
