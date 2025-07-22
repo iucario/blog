@@ -1,5 +1,5 @@
 ---
-title: Clair Obscur Expedition 33
+title: Clair Obscur Expedition 33(zh)
 description: 光与影：33号远征游玩体验
 pubDatetime: 2025-05-06
 modDatetime: 2025-05-06

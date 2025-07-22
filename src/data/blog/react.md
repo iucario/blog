@@ -1,9 +1,10 @@
 ---
-title: Upgrading React Exposes Problems But That’s a Good Thing
+title: Upgrading React Exposes Problems But That’s a Good Thing(zh)
 slug: upgrading-react
-description: 最近的错误处理中学到的事情
+description: What I learned from handling a bug in Frontend and teamwork
 pubDatetime: 2025-03-07T00:00:00Z
 modDatetime: 2025-03-09T00:00:00Z
+featured: true
 tags:
   - front-end
   - react

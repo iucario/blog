@@ -3,6 +3,7 @@ title: An Interesting Experience Debugging Go API Performance
 pubDatetime: 2025-04-05
 modDatetime: 2025-04-05
 draft: false
+featured: true
 description: Unexpected and humorous results from investigation of high CPU usage of Go API.
 tags:
   - go

@@ -1,5 +1,5 @@
 ---
-title: Metaphor Refantazio Review
+title: Metaphor Refantazio Review(zh)
 description: Metaphor Refantazio 《暗喻幻想》游玩体验
 pubDatetime: 2024-12-27
 modDatetime: 2025-02-23
