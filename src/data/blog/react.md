@@ -1,7 +1,7 @@
 ---
 title: Upgrading React Exposes Problems But That’s a Good Thing(zh)
 slug: upgrading-react
-description: What I learned from handling a bug in Frontend and teamwork
+description: What I learned from handling a Frontend bug and working in a team
 pubDatetime: 2025-03-07T00:00:00Z
 modDatetime: 2025-03-09T00:00:00Z
 featured: true
