@@ -13,9 +13,10 @@ export const SITE = {
   showBackButton: true, // show back button in post detail
   editPost: {
     url: "https://github.com/iucario/blog/edit/main/src/content/blog",
-    text: "Suggest Edit",
-    appendFilePath: true,
+    text: "Edit Page",
+    enabled: true,
   },
+  dynamicOgImage: true,
   dir: "ltr", // "rtl" | "auto"
   lang: "en",
   timezone: "Asia/Tokyo",

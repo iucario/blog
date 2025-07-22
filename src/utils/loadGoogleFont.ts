@@ -54,19 +54,19 @@ async function loadGoogleFonts(
     },
     {
       name: "Reddit Mono",
-      font: "Reddit+Mono:wght",
+      font: "Reddit+Mono",
       weight: 400,
       style: "italic",
     },
     {
       name: "Noto Sans SC",
-      font: "Noto+Sans+SC:wght",
+      font: "Noto+Sans+SC",
       weight: 400,
       style: "normal",
     },
     {
       name: "Noto Sans SC",
-      font: "Noto+Sans+SC:wght",
+      font: "Noto+Sans+SC",
       weight: 700,
       style: "bold",
     },
