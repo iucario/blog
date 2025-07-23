@@ -20,7 +20,8 @@ I have a basic sanity setup in place: VSCode + `Pylance` + `yapf`. It's not fanc
 But seems it's not universal for even experienced engineers. Some people still write Python like they’re hacking together shell scripts: no formatting, no linting, no types, just a file that runs.
 I have `shellcheck` for shell scripts by the way.
 
-I understand people may have bad impression or stereotypes against Python. But Python has changed a LOT and is really a better language now compare to itself 10 years ago.
+I understand people may have bad impression or stereotypes against Python. But Python has changed a LOT and is really a better language now compared to itself 10 years ago.
+
 With typing, modern toolchains, and a thriving ecosystem, it's more than just a scripting language.
 Senior engineers should really take Python as seriously as they would any other compiled language. Don't just treat it as a standalone script.
 
@@ -98,12 +99,13 @@ def __rshift__(self, other: DependencyMixin | Sequence[DependencyMixin]):
     return other
 ```
 
-There are various ways to declare task dependencies. This method is the most common and is the one my colleagues have always used. My PR challenged this method and was nitpicked by the a reviewer, saying my PR broke the _consistency_.
+There are various ways to declare task dependencies. This method is the most common and is the one my colleagues have always used. My PR challenged this method and was nitpicked by a reviewer, saying my PR broke the _consistency_.
 
-[Chain](<https://github.com/apache/airflow/blob/3f6d78c09e9637445c6bfd059caf31967de47071/task-sdk/src/airflow/sdk/bases/operator.py#L1632>) is an elegant and functional way of chaining the tasks dependencies. But the reviewer does not like it because no other dag did this, only mine.
+[Chain](<https://github.com/apache/airflow/blob/3f6d78c09e9637445c6bfd059caf31967de47071/task-sdk/src/airflow/sdk/bases/operator.py#L1632>) is an elegant and functional way of chaining the tasks dependencies. But the reviewer did not like it because no other dag did this, only mine.
 
 It can be solved by `_ = t1 >> [t2, t3]`. But it still breaks the _consistency_ with other dags.
 
 The only way to improve the code quality and engineers' sanity is to introduce `ruff` and `pyright`.
 So I listed current standard Python tools in the blog. Also I proposed the tools to all of my colleagues.
+
 I feel like my working environment just got a little better :)
