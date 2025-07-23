@@ -1,12 +1,14 @@
 ---
 title: Clair Obscur Expedition 33(zh)
-description: 光与影：33号远征游玩体验
+description: Review of Clair Obscur Expedition 33
 pubDatetime: 2025-05-06
 modDatetime: 2025-05-06
 tags:
   - gaming
   - chinese
 ---
+
+光与影：33号远征游玩体验
 
 看主播玩感觉战斗很酷，玛埃尔用刺剑的姿势特别帅，所以购入的。没想到黄金周全在玩 Clair Obscur Expedition 33.
 
