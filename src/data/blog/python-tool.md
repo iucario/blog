@@ -2,7 +2,7 @@
 title: Save My Team From Writing Python Like It Is 2010
 description: On Python formatting, typing, and the tooling gap in real-world teams.
 pubDatetime: 2025-07-22
-modDatetime: 2025-07-23
+modDatetime: 2025-07-26
 featured: true
 tags:
   - python
@@ -65,7 +65,7 @@ Simply run:
 ruff check . --fix
 ```
 
-### Static type checker
+### Static Type Checker
 
 [Pyright](https://microsoft.github.io/pyright/#/) and Mypy.
 
