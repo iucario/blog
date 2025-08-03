@@ -2,7 +2,7 @@
 title: Clair Obscur Expedition 33(zh)
 description: Review of Clair Obscur Expedition 33
 pubDatetime: 2025-05-06
-modDatetime: 2025-05-06
+modDatetime: 2025-08-03
 tags:
   - gaming
   - chinese
@@ -49,7 +49,7 @@ tags:
 40 小时，打完绘母。代入玛埃尔，剧情其实非常触动人有代入感。
 
 <details>
-  <summary>Spoiler warning</summary>
+<summary>Spoiler warning</summary>
 看到绘母的剧情，越发觉得主角一直都是玛埃尔。维索尔突然加进来真的没必要，古斯塔夫都可以不当主角，从头开始就玛埃尔多好。
 
 维尔索说的大实话
@@ -62,4 +62,5 @@ tags:
 我自然是选择捍卫我的感受，我不觉得这段虚拟的经历是无意义的。不过结局我还是选择了 Move on, 因为已经呆了够久累了。
 
 姐姐的剧情虽然不多，但是我觉得姐姐好玩。居然这么多经怪都是姐姐设计的，太变态了。
+
 </details>
