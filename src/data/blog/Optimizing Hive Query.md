@@ -49,6 +49,10 @@ I got really valuable advices from the external expert.
 She suggested me to replace `CONCAT` with specific date filters. Because the database was partitioned by dates. This was a useful improvement. It was also obvious so I already had tried before she mentioned.
 The date filters were not the root cause of forever-running query.
 
+It was not that I didn't ask AI, it was that the answers AI gave didn't get to the root of this problem.
+AI suggested me `UNION ALL`. It eliminated many `LEFT JOIN`s but the CTEs were still there.
+It may also encounter the same problems, as experts have pointed out.
+
 After some observation on the query. She suggested me to combine CTEs using `CASE WHEN`.
 That was the key to solve this mystery.
 
