@@ -3,7 +3,7 @@ title: Setting Up A New Mac
 slug: setting-up-a-new-mac
 description: Softwares, tools and config files to install on a new MacBook
 pubDatetime: 2025-04-14
-modDatetime: 2025-04-14
+modDatetime: 2025-08-19
 tags:
     - Macbook
     - tool
@@ -64,6 +64,9 @@ brew install python@3.13
 brew install fish starship
 
 brew install docker colima
+
+brew install shellcheck shfmt
+
 ```
 
 ## Fonts
