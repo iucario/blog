@@ -259,6 +259,7 @@ Special cases:
 - DAG. Same as critical path.
 
 For node number that is small. DFS can solve it. The state is the visited nodes and the current node. We use save the bit mask of visited nodes in an integer.
+This problem might be what the interviewer meant: <https://leetcode.com/problems/find-the-shortest-superstring>
 
 ```py
 @cache
