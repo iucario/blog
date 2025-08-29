@@ -1,7 +1,7 @@
 ---
 title: Graph
 pubDatetime: 2025-08-23
-modDatetime: 2025-08-24
+modDatetime: 2025-08-29
 draft: false
 description: Notes of graph algorithms and applications
 tags:
@@ -97,13 +97,21 @@ BFS one is also called Kahn's algorithm.
 
 ### Minimum Spanning Tree
 
-- Prim's algorithm
-  - Start with any vertex, then add edges to it. Always take the minimum weight edge.
-  - Time: `O(E log(E))`. Space `E`
+Prim's algorithm
 
-- Kruskal's algorithm
-  - Start with minimum weight edge. Add edge that does not form a cycle. Stop after V-1 edges have been taken.
-  - Time: `O(E log(E))`. Space `E`
+- Start with any vertex, then add edges to it. Always take the minimum weight edge.
+- Time: `O(E log(E))`. Space `E`
+
+Kruskal's algorithm
+
+- Start with minimum weight edge. Add edge that does not form a cycle. Stop after V-1 edges have been taken.
+- Time: `O(E log(E))`. Space `E`
+
+1. Build a list that stores `(cost, u, v)`
+2. Sort the list
+3. For edge in the list
+    1. if not `find(u, v)`, which means the edge won't create a cycle
+    2. `union(u, v)`
 
 ## Shortest Path
 
@@ -111,7 +119,7 @@ Negative cycles have no meaning.
 
 ### Dijkstra's Algorithm
 
-Find minimum cost from node A to node B. Single source paths. No negative paths.
+Find minimum cost from node A to node B. Single source paths.
 
 Algorithm:
 
@@ -124,7 +132,6 @@ Algorithm:
         Push `(new_cost, neighbor)` to heap
 
 - Complexity: Time `O(E log(V))`, Space `O(V)`
-- Does not work on negative path. Because no revisit.
 - Can be run on every start node to find all-pairs shorted paths
 
 ### Bellman-Ford Algorithm
@@ -142,6 +149,20 @@ Algorithm:
 - No need for building the graph. Pairs of (src, dest, cost)  are enough.
 
 Better for _sparse_ graph.
+
+Queue-based Bellman-Ford Algorithm:
+
+1. Build an adjacency graph
+2. Push `(0, src)` to queue. Save whether a node is in the queue to a list/dict
+3. Store the times of relaxitions for each node in a list/dict
+4. While queue:
+    1. Pop and update in queue status to False
+    2. Relax
+    3. Relaxation count += 1
+    4. If `in_queue[node] == False`, push in queue and update status
+    5. If relaxation count >= `V`, return **negative cycle**
+
+Queue-based Bellman-Ford algorithm is based on the idea that only updated nodes can possiblely improve other distances.
 
 ### Floyd-Warshall Algorithm
 
@@ -201,7 +222,7 @@ def findItinerary(self, tickets: List[List[str]]) -> List[str]:
 [Wikipedia](https://en.wikipedia.org/w/index.php?title=Longest_path_problem&oldid=525448430#Weighted_directed_acyclic_graphs)
 
 1. Topological sort it
-2. Initialize an array of costs to -inf. Initialize a parent array.
+2. Initialize an array of costs to `-inf`. Initialize a parent array.
 3. For node in the topological path:
     1. For neighbor in adj:
         1. If has a larger weighted path:
