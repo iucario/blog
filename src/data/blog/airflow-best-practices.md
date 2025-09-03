@@ -1,7 +1,7 @@
 ---
 title: Airflow Best Practices
 pubDatetime: 2025-08-28
-modDatetime: 2025-08-29
+modDatetime: 2025-09-03
 draft: false
 description: Airflow pitfalls, or essentially Python pitfalls
 tags:
@@ -9,14 +9,14 @@ tags:
   - airflow
 ---
 
-I have witnessed a number of bizarre mistakes while reviewing Airflow pull requests for the team recently. Certain Airflow features have also left me baffled. I feel it it necessary to document what I _personally_ consider to be best practices.
+I have witnessed a number of bizarre mistakes while reviewing Airflow pull requests for the team recently. Certain Airflow features have also left me baffled. I feel it necessary to document what I _personally_ consider to be best practices.
 
 Airflow has an article about it:
 <https://airflow.apache.org/docs/apache-airflow/stable/best-practices.html>
 
 ## Local Testing
 
-_Fears_ regarding the uncertainty of Airflow DAGs stem from the lack of testing them in local environments. It is difficult to test thoroughly in local because of the nature of Airflow. However basic syntax and templates, etc. can be easily tested with a few commands.
+_Fears_ regarding the uncertainty of Airflow DAGs stem from the lack of testing in local environments. It is difficult to test thoroughly in local because of the nature of Airflow. However basic syntax and templates, etc. can be easily tested with a few commands.
 
 ```sh
 airflow tasks list <dag>
