@@ -53,6 +53,10 @@ Bit
 
 ```py
 (x >> i) & 1 # getting i-th bit, counting from right
+
+x = 15
+x.bit_count()
+# 4
 ```
 
 Bisect
