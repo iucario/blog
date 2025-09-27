@@ -45,8 +45,8 @@ html[data-theme="dark"] {
     scrollbar-color: var(--color-muted) transparent;
   }
   html {
-    font-size: 17px;
-    @screen sm {
+    font-size: 16px;
+    @variant sm {
       font-size: 16px;
     }
     @apply overflow-y-scroll scroll-smooth;
