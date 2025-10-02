@@ -136,6 +136,14 @@ cache_ttl_seconds = 900
 
 In conclusion, better use templates `{{ var.value.get('foo') }}`, not `Variables`. Configure cache.
 
+## SSH Operator
+
+The `cmd_timeout` parameter sets the allowed time of the command execution. It is 10 seconds by default, which can be too short for many operations. If set to `None` it would be forever.
+
+Can be set on the SSH connection level so all the DAGs using that connection can benefit from it. In Airflow UI Connections, in the Extra field, set `cmd_timeout` in the JSON config.
+
+<https://airflow.apache.org/docs/apache-airflow-providers-ssh/stable/connections/ssh.html>
+
 ## Others
 
 `Param` has a `description` arg. Utilize that.
