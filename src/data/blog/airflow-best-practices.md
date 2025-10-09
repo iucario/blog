@@ -1,7 +1,7 @@
 ---
 title: Airflow Best Practices
 pubDatetime: 2025-08-28
-modDatetime: 2025-09-03
+modDatetime: 2025-10-09
 draft: false
 description: Airflow pitfalls, or essentially Python pitfalls
 tags:
@@ -143,6 +143,30 @@ The `cmd_timeout` parameter sets the allowed time of the command execution. It i
 Can be set on the SSH connection level so all the DAGs using that connection can benefit from it. In Airflow UI Connections, in the Extra field, set `cmd_timeout` in the JSON config.
 
 <https://airflow.apache.org/docs/apache-airflow-providers-ssh/stable/connections/ssh.html>
+
+## Dag Dependencies
+
+### TriggerDagRunOperator
+
+Example operator:
+
+```py
+trigger_cart_reminder = TriggerDagRunOperator(
+    task_id="trigger_child_dag",
+    trigger_dag_id="Child Dag ID",
+    trigger_run_id="triggered_from_{{ run_id }}",
+    logical_date="{{ data_interval_end }}",  # Set this so the child task has corresponding logical_date
+    conf={
+        "triggered_by": "This Dag",
+        "data_interval_start": "{{ data_interval_start }}",
+        "data_interval_end": "{{ data_interval_end }}",
+        "reason": "Triggered by parent DAG"
+    },
+    wait_for_completion=False,  # Don't wait for completion
+    allowed_states=['success'],
+    failed_states=['failed'],
+)
+```
 
 ## Others
 
