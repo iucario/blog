@@ -1,7 +1,7 @@
 ---
 title: Airflow Best Practices
 pubDatetime: 2025-08-28
-modDatetime: 2025-10-09
+modDatetime: 2025-10-12
 draft: false
 description: Airflow pitfalls, or essentially Python pitfalls
 tags:
@@ -167,6 +167,20 @@ trigger_cart_reminder = TriggerDagRunOperator(
     failed_states=['failed'],
 )
 ```
+
+## Parallelism
+
+<https://airflow.apache.org/docs/apache-airflow/stable/configurations-ref.html#parallelism>
+
+> This defines the maximum number of task instances that can run concurrently per scheduler in Airflow, regardless of the worker count.
+
+There was a weird issue my team encountered in production related to parallelism. The Airflow scheduler stopped working when the concurrent tasks reached max `parallelism`.
+The adhoc solution is to increase the `parallelism` from the default 32 to a larger number.
+
+However I did some experiments on the same Airflow 2.11 and found out that `parallelism` was not the root cause. `parallelism` together with `TriggerDagRunOperator` which had `wait_for_completion=True` was the real cause.
+The conclusion is that **DO NOT** set `wait_for_completion=True`.
+
+Didn't test on Airflow 3.1.0, maybe the behaviour is optimized.
 
 ## Others
 
