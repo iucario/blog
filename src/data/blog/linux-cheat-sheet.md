@@ -1,5 +1,6 @@
 ---
-title: Linux Commands
+title: Linux Cheat Sheet
+slug: linux-cheat-sheet
 pubDatetime: 2025-10-02
 modDatetime: 2025-10-02
 draft: false
@@ -38,7 +39,7 @@ curl cht.sh/tar
 man tar
 ```
 
-## My Notes
+## Commands
 
 File
 
@@ -57,6 +58,15 @@ File
 - `split --number 2 <file>` Used one time when I have to split a 10G file into under 1G per file.
 
 I can spend a section on `sed` and `awk` and more on `find`. But I will probably ask AI when I want to use them.
+
+File permisson:
+
+```none
+# user group other
+-rwxrwxrwx
+# directory
+drwxrwxrwx
+```
 
 SSH
 
@@ -80,6 +90,7 @@ System
 - `top`
 - `ps aux`
 - `lsof -i :8080`
+- `lsof -p <PID> | wc -l` check number of file descriptors.
 - `lshw`
 - `df`
 - `free --human` Show free memory
@@ -89,9 +100,37 @@ System
 - `w` Show who is logged on and what they are doing.
 - `hostname`
 - `nohup <script.sh> &`
+- `jobs`
 - `kill <pid>`
+- `sudo nvme smart-log <device>`. Checking the SSD status. Probably the last thing to confirm when a database was down.
+- `systemctl status <service>`
 
 Network
 
 - `host <domain> <dns>`
 - `ufw` Uncomplicated Firewall
+- `ip addr`
+- `dig example.com`
+- `netstat -tuln`
+
+DNS file: `/etc/resolv.conf`
+
+## Notes
+
+An inode stores all metadata about a file, _except_ for the filename.
+
+Hard links:
+
+- Only link to a file, not a directory
+- Can't reference a file on a different disk/volume
+- Links will reference a file even if it is moved
+- Links reference inode/physical locations on the disk
+
+Symbolic (soft) links:
+
+- Can link to directories
+- Can reference a file/folder on a different hard disk/volume
+- Links remain if the original file is deleted
+- Links will NOT reference the file anymore if it is moved
+- Links reference abstract filenames/directories and NOT physical locations.
+- They have their own inode

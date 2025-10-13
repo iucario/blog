@@ -18,7 +18,7 @@ Some typical behaviour questions:
 
 I could give several perfect stories for an interview, showing exactly how I solved the issue and made the team better. There are no casualties and there's a happy ending. But reality does not always has good endings. All of these cherry-picked stories feel too weak compared to my real experience.
 
-I got **trolled** by AI. Or technically the QA team member who abuses AI to conduct tests and reports.
+I got **trolled** by AI. Or technically the QA team member who spammed AI to conduct tests and reports.
 
 ## The Faulty QA Report
 
