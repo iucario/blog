@@ -2,7 +2,7 @@
 title: Obsidian
 pubDatetime: 2025-09-23
 modDatetime: 2025-09-27
-draft: true
+draft: false
 description: My Obsidian plugins and config
 tags:
   - markdown
@@ -39,6 +39,6 @@ I've tried several note-taking apps before and finally settled on Obsidian, whic
 I don't like WYSIWYG(What You See Is What You Get) editors.
 The frist thing I do is setting the Default editing mode to Source mode. I switch to reading view when I want to read.
 
-I put the Obsidian folder in my OneDrive so it can be synchronized.
+The notes are synchronized using OneDrive.
 
 VSCode is also an excellent Markdown editor. The user experience is seamless when switching between Obsidian and VSCode.
