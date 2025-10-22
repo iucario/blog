@@ -7,7 +7,8 @@ draft: false
 description: Common Expression Language(CEL) Go basic usage, custom functions, etc.
 tags:
   - Go
-  - CEL-Go
+  - CEL
+  - Common Expression Language
 ---
 
 Common Expression Language(CEL) is an an ideal tool for lightweight expression evaluation.
@@ -179,5 +180,18 @@ func getNestedValue(data map[string]any, key string) any {
         }
     }
     return nil
+}
+```
+
+## Cache
+
+CEL Program can be cached. It eliminates the process of creating environments. We can simply `program.Eval(data)`.
+
+I find it very useful also caching the AST because `cel.Program` alone is difficult to debug with.
+
+```go
+type Item struct {
+    Ast    *cel.Ast
+    Prog   cel.Program
 }
 ```
