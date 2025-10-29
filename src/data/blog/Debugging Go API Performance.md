@@ -34,7 +34,7 @@ What a debugging experience!
 
 ## Optimization
 
-Filebeat aside. We did do many improvements that further boosted the performance.
+Filebeat aside. My mentor and I did do many improvements that further boosted the performance.
 
 - Used faster logger and only kept essential logs. This made me reconsider what errors and information to log in the app and the error handling.
 - Cached CEL Program. Because it was taking some amount of time to create the CEL environment.
