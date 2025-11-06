@@ -24,9 +24,9 @@ tags:
 parent = []
 
 def find(x) -> int:
-    if parent[x] == x:
-        return x
-    return find(parent[x])
+    if parent[x] != x:
+        parent[x] = find(parent[x])
+    return parent[x]
 
 def union(a, b):
     pa = find(a)
