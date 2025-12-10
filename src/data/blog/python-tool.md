@@ -3,7 +3,7 @@ title: Save My Team From Writing Python Like It Is 2010
 description: On Python formatting, typing, and the tooling gap in real-world teams.
 pubDatetime: 2025-07-22
 modDatetime: 2025-07-26
-featured: true
+featured: false
 tags:
   - python
   - ruff

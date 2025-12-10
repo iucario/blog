@@ -4,7 +4,7 @@ slug: upgrading-react
 description: What I learned from handling a Frontend bug and working in a team
 pubDatetime: 2025-03-07T00:00:00Z
 modDatetime: 2025-07-26
-featured: true
+featured: false
 tags:
   - front-end
   - react

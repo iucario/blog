@@ -2,7 +2,7 @@
 title: Airflow Best Practices
 pubDatetime: 2025-08-28
 modDatetime: 2025-10-12
-draft: false
+draft: true
 description: Airflow pitfalls, or essentially Python pitfalls
 tags:
   - python
