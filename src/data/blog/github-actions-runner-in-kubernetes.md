@@ -36,7 +36,7 @@ level=error msg="parsing PID \"\": strconv.Atoi: parsing \"\": invalid syntax"
 level=error msg="(Unable to determine exit status)"
 ```
 
-There are discussions about it:
+There are discussions about it:\
 <https://github.com/containers/buildah/issues/1901>\
 <https://gitlab.com/gitlab-org/gitlab/-/issues/503827>
 
