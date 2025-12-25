@@ -41,6 +41,7 @@ In general I like Niz Micro 84.
 + Cannot customize MacOS mode keys in its software. The software only works in Windows system and supports Windows keys.
 + The USB receiver does not work. Or I don't know how to make it connect to the keyboard.
 + The QR code on the back is a link to Niz's Wechat. Thought it might be a more useful link like manual.
++ I realize having 2 extra modifier keys is _not_ really useful. The condensed keycaps makes it easy to mis-press. I would choose the 82 keys one if I can.
 
 ## Customize Keys
 
@@ -49,6 +50,8 @@ I am surprised.
 
 Screenshot of the software:
 ![Software](../../assets/images/niz-4.png)
+
+Note the software version is v1.4.1. The [Google Drive](https://drive.google.com/drive/folders/1VBmO3KhEyfUPx0CgcBiXtNM2K_JoI84Q?usp=drive_link) link can be found from the Japanese site.
 
 FN keys can also be customized. Making it very flexible.
 
