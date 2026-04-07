@@ -33,6 +33,7 @@ abbr -a -- glol 'git log --graph --pretty="%Cred%h%Creset -%C(auto)%d%Creset %s 
 abbr -a -- gpsup 'git push --set-upstream origin (git branch --show-current)'
 abbr -a -- gaa 'git add --all'
 abbr -a -- gl 'git pull'
+abbr -a -- k kubectl
 ```
 
 Save to a script
