@@ -52,3 +52,5 @@ Boss 的血也都不厚，有时候我以为会不会要站起来第二个血条
 
 此时的画面已经很可以看了，不过有一个 mod 是几乎必需的，否则会出现人物模型问题。
 Vertex Explosion Fix: <https://www.nexusmods.com/bloodborne/mods/109>
+
+打完蜘蛛罗姆的时候进动画黑屏了，需要这个 mod: <https://www.nexusmods.com/bloodborne/mods/70>
