@@ -2,10 +2,9 @@
 title: Git Commands
 description: Useful git commands in my daily work.
 pubDatetime: 2026-04-14
-modDatetime: 2026-04-14
+modDatetime: 2026-04-24
 tags:
   - git
-draft: true
 ---
 
 ## Git
