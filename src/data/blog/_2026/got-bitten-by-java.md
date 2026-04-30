@@ -29,13 +29,7 @@ Kustomize doesn't do this kind of _"smart"_ things.
 
 ### Example
 
-To reproduce:
-
-```sh
-helm create example
-```
-
-Add a config map:
+The config map:
 
 ```text
 apiVersion: v1
@@ -48,7 +42,7 @@ data:
 {{- end }}
 ```
 
-And the env variables appended to `values.yaml`:
+And the environment variables in `values.yaml`:
 
 ```yaml
 env:
@@ -60,13 +54,7 @@ env:
     value: "1000000"
 ```
 
-Render chart templates:
-
-```sh
-helm template mychart .
-```
-
-Now look at the generated configmap:
+Render chart templates and look at the generated configmap:
 
 ```yaml
 # Source: example/templates/configmap.yaml
@@ -90,24 +78,28 @@ It wasn't actually necessary when stdout and stderr logs are automatically colle
 
 Perhaps someone created [cloud logging for Java](https://docs.cloud.google.com/logging/docs/setup/java) _four years ago_ to send errors to GCP **Error Reporting**. The best approach is to redirect to stdout:
 
-```
+```text
 <redirectToStdout>true</redirectToStdout>
 ```
 
 Deployment tags and trace IDs can then be easily collected and queried.
 
 Well. To be honest it wasn't 100% Logback setting's fault. I wasn't very familiar with Java Springboot or Logback configuration. Otherwise I would have noticed where the logs had been.
+
 But how on earth can an XML file that isn't even referenced in the code be associated with logging configuration? Ultimately, it's a Java issue. Too many _magical_ things happen with XML files. Have to pay attention to every XML file and build files in Java projects from now on.
+
+>[!TIP] Ultimately a Java issue
+> Every XML file and build file matters
 
 ## Inaccessible Information
 
 The third factor, and perhaps the most fundamental, is overly strict **access control**.
 Due to VPC and permission settings, I was unable to access the GKE cluster. Despite requesting permissions, the SRE took several hours to resolve the issue.
 
-I checked the GKE cluster details page as soon as I gained access. Several tabs were clearly displayed on the page. One of them was "App Errors(10)", which was prominently displayed and difficult to miss.
-I clicked on it and immediately spotted the Java error message:
+I checked the GKE cluster details page as soon as I gained access. Several tabs were clearly displayed on the page. One of them was "App Errors(10)", which was prominently displayed and hard to miss.
+I clicked on it and can immediately spot the Java error message:
 "\*\*\*APPLICATION FAILED TO START\*\*\*: Failed to bind properties. Value: 1e+06".
 
-This problem could have been discovered much earlier if I had had viewing permissions for GKE.
+This problem could have been discovered much earlier if developers had had viewing permissions for GKE.
 
 It's ironic and frustrating that those who are truly doing the jobs for the owner are being blocked by the owner.
