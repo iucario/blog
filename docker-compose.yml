@@ -1,9 +1,10 @@
 services:
   app:
-    image: node:lts
+    build:
+      context: .
+      target: dev
     ports:
-      - 4321:4321
-    working_dir: /app
-    command: npm run dev -- --host 0.0.0.0
+      - "4321:4321"
     volumes:
-      - ./:/app
+      - ./src/data:/app/src/data
+    
