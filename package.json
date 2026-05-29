@@ -2,6 +2,7 @@
   "name": "blog",
   "type": "module",
   "version": "5.5.0",
+  "packageManager": "pnpm@11.0.7",
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build && pagefind --site dist && cp -r dist/pagefind public/",
@@ -26,6 +27,9 @@
     "satori": "^0.19.3",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.2.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild", "sharp", "@resvg/resvg-js"]
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
