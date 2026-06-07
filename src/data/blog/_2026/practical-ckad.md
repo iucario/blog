@@ -75,7 +75,7 @@ serviceaccount        Create a service account with the specified name
 token                 Request a service account token
 ```
 
-You should be familiar the spec of Persistent Volume, Persistent Volume Claim, Storage Class and Network Policy because they can't be imperatively created.
+You should be familiar with the spec of Persistent Volume, Persistent Volume Claim, Storage Class and Network Policy because they can't be imperatively created.
 
 Know the differences between **StatefulSet** and Deployment are:
 
