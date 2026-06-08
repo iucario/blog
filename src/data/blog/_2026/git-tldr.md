@@ -29,7 +29,7 @@ Fix up a previous commit.
 
 ```sh
 git commit --fixup <commit>
-git rebase --auto-squash <commit>~1
+git rebase --autosquash <commit>~1
 ```
 
 Rebase from certain commit. Extremely useful when your team squashes the commits and you have to rebase onto the latest branch.
