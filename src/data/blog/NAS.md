@@ -2,7 +2,7 @@
 title: QNAP TS464C
 description: My first NAS. And It's great. Keep it in mind to use a hard disk dedicated for NAS
 pubDatetime: 2025-02-10
-modDatetime: 2025-05-09
+modDatetime: 2026-06-26
 tags:
   - gadget
   - hardware
@@ -78,6 +78,22 @@ source .zshrc
 
 python3 --version
 ```
+
+## Run Script On Startup
+
+Use autorun.sh
+
+<https://www.qnap.com/en/how-to/faq/article/running-your-own-application-at-startup>
+
+```sh
+mount $(/sbin/hal_app --get_boot_pd port_id=0)6 /tmp/config
+sudo vi /tmp/config/autorun.sh
+chmod +x /tmp/config/autorun.sh
+umount /tmp/config
+```
+
+Then go to NAS web UI. Control Panel -> Hardware -> General. Tick "Run user defined processes during startup".
+Click "View autorun.sh" to confirm your script content.
 
 ## Script For Regex Renaming
 
