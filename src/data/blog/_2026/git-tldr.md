@@ -44,6 +44,12 @@ Checkout a file from other branch
 git restore --source <branch> -W <filepath>
 ```
 
+Delete remote tag
+
+```sh
+git push origin --delete <tag>
+```
+
 ## Aliases
 
 Shell alias
