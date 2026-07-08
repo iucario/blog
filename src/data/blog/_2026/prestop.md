@@ -1,20 +1,24 @@
 ---
-title: Use Kubernetes PreStop To Reduce Server Error During Scaling Down
-description: Solving infrastructure problems with infrastructure.
+title: Use Kubernetes PreStop to Reduce Server Errors During Scale Down
+description: How a simple PreStop hook can reduce transient 5xx errors during pod termination. In production.
 pubDatetime: 2026-07-07
 modDatetime: 2026-07-07
-draft: true
+draft: false
 tags:
   - go
   - kubernetes
 ---
 
-How to reduce 5xx server error during scaling down?
+Transient 5xx HTTP errors can happen while Kubernetes is terminating Pods during a scale down or rolling update.
+This can happen because there is often a short **delay** before load balancers stop routing traffic to a Pod that is already shutting down.
 
-Never try to solve the application code for infrastructure problems. It is an easy fix on the infrastructure.
-Actually GCP documentation suggests the same solution: <https://docs.cloud.google.com/kubernetes-engine/docs/troubleshooting/load-balancing>
+So how can we reduce these errors?
+Before adding complexity to your application, check whether the infrastructure already provides a solution.
+In fact, I've seen experienced engineers try to solve this by adding coordination to application's health checks. The real issue, however, was infrastructure rather than application logic.
 
-Let us do the experiment in local Kubernetes cluster.
+Google Cloud's documentation recommends using a `PreStop` hook to help reduce these transient errors. <https://docs.cloud.google.com/kubernetes-engine/docs/troubleshooting/load-balancing>
+
+Let's verify this with a small experiment on a local Kubernetes cluster.
 
 ## Simple Graceful Shutdown Go Server
 
@@ -58,13 +62,6 @@ func main() {
 }
 ```
 
-## No PreStop
-
-```text
-demo-59c5bc757c-qjkvn 2026-07-07T13:03:53.856135577Z signal received
-demo-59c5bc757c-qjkvn 2026-07-07T13:03:56.541248925Z stopped
-```
-
 ## PreStop
 
 ```yaml
@@ -78,7 +75,7 @@ spec:
 ```
 
 Before sending the SIGTERM, the command `sleep 5` will be executed first.
-Leaving enough time for the LB to be aware of the termination of the pod.
+Leaving some time for the LB to be aware of the termination of the pod.
 At the same time of deleting the pod(scale down), the pod status turns to `Terminating`.
 
 ```sh
@@ -112,10 +109,11 @@ demo-75c4f4698f-4nbjj 2026-07-07T13:07:46.266371607Z signal received
 demo-75c4f4698f-4nbjj 2026-07-07T13:07:46.541886381Z stopped
 ```
 
+As there is only one pod, the traffic was still routed to it even when it was terminating. The termination signal was sent to the pod at `22:07:46.266` while the scale happened at `22:07:39.893`. Delayed around 5 seconds.
+
 ### More Than One Pod
 
-Kubernetes stops routing traffic to `terminating` pods when there are multiple replicas.
-Load balancers implementation may vary but they should repect this and stop routing traffic to the pods as soon as they realize the pod is `terminating`.
+Kubernetes removes terminating Pods from a Service's endpoints so that they are no longer selected for new traffic. Different load balancer implementations may observe this change differently, but once they detect it, they stop sending new requests to the terminating Pod.
 
 Here is the expriment to prove that.
 
@@ -130,7 +128,7 @@ I had 5 terminal tabs open:
     done
     ```
 
-    `127.0.0.1:43181` is the minikube service tunnel.
+    `127.0.0.1:43181` was the minikube service tunnel.
 2. Scale down
     `date --rfc-3339=ns; k scale deployment demo --replicas 1`
 
@@ -140,8 +138,8 @@ I had 5 terminal tabs open:
     ```
 
     Scaled down at **13:47:15.542** UTC. Note the timestamp.
-3. EndpointSlices
-    `kubectl get endpointslices -w`
+3. EndpointSlices\
+    `kubectl get endpointslices -w`\
     I can observe the moment I scaled the replicas down to 1, the endpoints decreased from 2 to 1.
 4. One pod logs
 
@@ -162,11 +160,13 @@ I had 5 terminal tabs open:
     2026/07/07 13:47:20 2026-07-07T13:47:20.748236182Z stopped
     ```
 
-    The last request the terminating pod received was at **13:47:15**, the time when I scaled it down.
-    Then at **13:47:20**, it received the SIGTERM. Right after the `PreStop` sleep.
+    The last request the terminating pod received was at **13:47:15**, the time when I scaled it down.\
+    Then at **13:47:20**, it received the SIGTERM, right after the `PreStop` sleep.\
     During the `PreStop` sleep, no request was routed to this pod. Exactly as my expectation.
 
-## Full Demo
+The small expriment confirmed that `PreStop` is the solution.
+
+## Full Code
 
 Deployment
 
