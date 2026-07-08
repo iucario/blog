@@ -1,6 +1,7 @@
 ---
 title: Less Is More Valuable In the Age of AI
 description: Write more humane articles and messages by increasing information density and reduce information entropy.
+featured: true
 pubDatetime: 2026-06-19
 modDatetime: 2026-06-19
 ---
