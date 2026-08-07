@@ -23,34 +23,40 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured)
 <Layout>
   <Header />
   <main id="main-content" data-layout="index">
-    <section id="hero" class="border-accent border-s-8 ps-4 max-sm:mx-2">
-      <div class="mb-2 flex items-end gap-3">
-        <h1 class="m-0 text-xl font-extrabold sm:text-5xl">Greetings</h1>
-        <a
-          target="_blank"
-          href="/rss.xml"
-          class="inline-block"
-          aria-label="rss feed"
-          title="RSS Feed"
-        >
-          <IconRss width={20} height={20} class="stroke-accent scale-125 stroke-3 rtl:-rotate-90" />
-          <span class="sr-only">RSS Feed</span>
-        </a>
-      </div>
+    <section id="hero">
+      <div class="border-accent border-s-6 ps-4">
+        <div class="mb-2 flex items-end gap-3">
+          <h1 class="m-0 text-3xl font-extrabold sm:text-7xl">Greetings</h1>
+          <a
+            target="_blank"
+            href="/rss.xml"
+            class="inline-block"
+            aria-label="rss feed"
+            title="RSS Feed"
+          >
+            <IconRss
+              width={20}
+              height={20}
+              class="stroke-accent scale-125 stroke-3 rtl:-rotate-90"
+            />
+            <span class="sr-only">RSS Feed</span>
+          </a>
+        </div>
 
-      <p>
-        A personal archive of technical experiments, games, hardware, and other things worth
-        remembering.
-      </p>
-      {
-        // only display if at least one social link is enabled
-        SOCIALS.length > 0 && (
-          <div class="mt-4 flex flex-col sm:flex-row sm:items-center">
-            <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">Social Links:</div>
-            <Socials />
-          </div>
-        )
-      }
+        <p>
+          A personal archive of technical experiments, games, hardware, and other things worth
+          remembering.
+        </p>
+        {
+          // only display if at least one social link is enabled
+          SOCIALS.length > 0 && (
+            <div class="mt-4 flex flex-col sm:flex-row sm:items-center">
+              <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">Social Links:</div>
+              <Socials />
+            </div>
+          )
+        }
+      </div>
     </section>
 
     {
@@ -91,6 +97,38 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured)
   </main>
   <Footer />
 </Layout>
+
+<style>
+  #hero h1 {
+    max-width: 100%;
+    color: var(--accent);
+    line-height: 1;
+    letter-spacing: -0.06em;
+  }
+
+  #hero p {
+    max-width: none;
+    font-size: 1.1rem;
+    line-height: 1.8;
+  }
+
+  #featured h2,
+  #recent-posts h2 {
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  @media (max-width: 640px) {
+    #featured,
+    #recent-posts {
+      padding-block: 2rem 1rem;
+    }
+  }
+</style>
 
 <script>
   document.addEventListener("astro:page-load", () => {

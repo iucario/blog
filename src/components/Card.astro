@@ -55,3 +55,67 @@ const headerProps = {
     )}
   </div>
 </li>
+
+<style>
+  .post-card {
+    display: flex;
+    width: 100%;
+    min-width: 0;
+    flex-direction: column;
+    align-self: start;
+    border: 0;
+    background: transparent;
+  }
+
+  .post-card__image-link {
+    display: block;
+    margin-top: 1rem;
+    overflow: hidden;
+  }
+
+  .post-card__image {
+    aspect-ratio: 16 / 10;
+    width: 100%;
+    border: 1px solid var(--border);
+    object-fit: cover;
+    box-shadow: 0.35rem 0.35rem 0 var(--muted);
+    transition: transform 180ms ease;
+  }
+
+  .post-card:hover .post-card__image {
+    transform: scale(1.02);
+  }
+
+  .post-card__body {
+    padding: 0;
+  }
+
+  .post-card__link {
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 0.15rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .post-card__link h2,
+  .post-card__link h3 {
+    margin: 0;
+    color: var(--foreground);
+    font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+    line-height: 1.35;
+  }
+
+  .post-card__body p:last-child {
+    margin: 0;
+    line-height: 1.7;
+    opacity: 0.9;
+  }
+
+  @media (max-width: 640px) {
+    .post-card__image {
+      aspect-ratio: 16 / 9;
+    }
+  }
+</style>
