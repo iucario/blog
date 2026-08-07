@@ -3,9 +3,9 @@
 @import "./typography.css";
 
 @theme {
-  --font-serif: "Literata", "Noto Serif SC", Georgia, "Times New Roman", serif;
+  --font-serif: "Literata", "Noto Sans SC", Georgia, "Times New Roman", serif;
   --font-mono:
-    "Google Sans Code", "Noto Serif SC", "Microsoft YaHei", "Yu Gothic", "ui-sans-serif",
+    "Google Sans Code", "Noto Sans SC", "Microsoft YaHei", "Yu Gothic", "ui-sans-serif",
     "system-ui", "sans-serif", "apple color emoji", "segoe ui emoji", "segoe ui symbol",
     "noto color emoji", monospace;
 }
