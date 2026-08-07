@@ -1,4 +1,5 @@
 import { defineConfig, envField } from "astro/config"
+import { unified } from "@astrojs/markdown-remark"
 import tailwindcss from "@tailwindcss/vite"
 import sitemap from "@astrojs/sitemap"
 import remarkToc from "remark-toc"
@@ -21,8 +22,10 @@ export default defineConfig({
     }),
   ],
   markdown: {
-    remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
-    rehypePlugins: [[rehypeCallouts, { theme: "github" }]],
+    processor: unified({
+      remarkPlugins: [remarkToc, [remarkCollapse, { test: "Table of contents" }]],
+      rehypePlugins: [[rehypeCallouts, { theme: "github" }]],
+    }),
     shikiConfig: {
       // For more themes, visit https://shiki.style/themes
       themes: { light: "min-light", dark: "night-owl" },
@@ -37,14 +40,7 @@ export default defineConfig({
     },
   },
   vite: {
-    // eslint-disable-next-line
-    // @ts-ignore
-    // This will be fixed in Astro 6 with Vite 7 support
-    // See: https://github.com/withastro/astro/issues/14030
     plugins: [tailwindcss()],
-    optimizeDeps: {
-      exclude: ["@resvg/resvg-js"],
-    },
   },
   image: {
     responsiveStyles: true,

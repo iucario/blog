@@ -3,6 +3,16 @@ export const PreloadFontUrl =
 
 export const PreloadCJKFont = "https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&display=swap"
 
+let cachedFonts: {
+  text: string
+  promise: ReturnType<typeof loadGoogleFonts>
+} | null = null
+
+const includesText = (available: string, requested: string) => {
+  const chars = new Set(available)
+  return [...requested].every(char => chars.has(char))
+}
+
 async function loadGoogleFont(
   font: string,
   text: string,
@@ -82,4 +92,12 @@ async function loadGoogleFonts(
   return fonts
 }
 
-export default loadGoogleFonts
+export default function loadCachedGoogleFonts(text: string) {
+  if (cachedFonts && includesText(cachedFonts.text, text)) {
+    return cachedFonts.promise
+  }
+
+  const promise = loadGoogleFonts(text)
+  cachedFonts = { text, promise }
+  return promise
+}
