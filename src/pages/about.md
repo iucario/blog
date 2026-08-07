@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/AboutLayout.astro
 title: "About"
-modDatetime: 2025-08-10
+modDatetime: 2026-08-07
 ---
 
 Hi! 👋
@@ -26,4 +26,4 @@ INTJ.
 
 ---
 
-The fonts used in this blog are [Google Sans Code](https://fonts.google.com/specimen/Google+Sans+Code) and [Noto Sans SC](https://fonts.google.com/specimen/Noto+Sans+SC).
+The fonts used in this blog are Literata, [Google Sans Code](https://fonts.google.com/specimen/Google+Sans+Code) and [Noto Sans SC](https://fonts.google.com/specimen/Noto+Sans+SC).

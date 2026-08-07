@@ -5,7 +5,7 @@ pubDatetime: 2026-08-07
 modDatetime: 2026-08-07
 tags:
   - Go
-draft: true
+draft: false
 ---
 
 I have talked about graceful shutdown on the infrastructure side using Kubernetes `preStop` in [prestop](/posts/prestop).
