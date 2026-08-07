@@ -4,33 +4,54 @@ import type { CollectionEntry } from "astro:content";
 import { getPath } from "@/utils/getPath";
 import Datetime from "./Datetime.astro";
 
+const images = import.meta.glob<string>(
+  "/src/assets/images/*",
+  { eager: true, query: "?url", import: "default" }
+);
+
 export interface Props extends CollectionEntry<"blog"> {
   variant?: "h2" | "h3";
 }
 
-const { variant = "h2", data, id, filePath } = Astro.props;
+const { variant = "h2", data, id, filePath, body = "" } = Astro.props;
 
 const { title, description, pubDatetime, modDatetime, timezone } = data;
+const imageSource = body.match(/!\[[^\]]*\]\((?:<)?([^)>]+)(?:>)?\)/)?.[1];
+const imageName = imageSource
+  ? decodeURIComponent(imageSource.split("/").pop() ?? "")
+  : "";
+const image = imageName
+  ? Object.entries(images).find(([path]) =>
+      decodeURIComponent(path).endsWith(`/${imageName}`)
+    )?.[1]
+  : undefined;
 
 const headerProps = {
   style: { viewTransitionName: slugifyStr(title) },
-  class: "text-lg font-medium decoration-dashed hover:underline",
+  class: "text-lg font-medium",
 };
 ---
 
-<li class="my-6">
-  <a
-    href={getPath(id, filePath)}
-    class="inline-block text-lg font-medium text-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
-  >
-    {
-      variant === "h2" ? (
-        <h2 {...headerProps}>{title}</h2>
-      ) : (
-        <h3 {...headerProps}>{title}</h3>
-      )
-    }
-  </a>
-  <Datetime {pubDatetime} {modDatetime} {timezone} />
-  <p>{description}</p>
+<li class:list={["post-card", { "post-card--image": image }]}>
+  <div class="post-card__body">
+    <a
+      href={getPath(id, filePath)}
+      class="post-card__link text-accent focus-visible:no-underline"
+    >
+      {
+        variant === "h2" ? (
+          <h2 {...headerProps}>{title}</h2>
+        ) : (
+          <h3 {...headerProps}>{title}</h3>
+        )
+      }
+    </a>
+    <Datetime {pubDatetime} {modDatetime} {timezone} />
+    <p>{description}</p>
+    {image && (
+      <a href={getPath(id, filePath)} class="post-card__image-link">
+        <img src={image} alt="" loading="lazy" class="post-card__image" />
+      </a>
+    )}
+  </div>
 </li>

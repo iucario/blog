@@ -1,32 +1,31 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "@/layouts/Layout.astro";
-import Header from "@/components/Header.astro";
-import Footer from "@/components/Footer.astro";
-import Socials from "@/components/Socials.astro";
-import LinkButton from "@/components/LinkButton.astro";
-import Card from "@/components/Card.astro";
-import Hr from "@/components/Hr.astro";
-import getSortedPosts from "@/utils/getSortedPosts";
-import IconRss from "@/assets/icons/IconRss.svg";
-import IconArrowRight from "@/assets/icons/IconArrowRight.svg";
-import { SITE } from "@/config";
-import { SOCIALS } from "@/constants";
+import { getCollection } from "astro:content"
+import Layout from "@/layouts/Layout.astro"
+import Header from "@/components/Header.astro"
+import Footer from "@/components/Footer.astro"
+import Socials from "@/components/Socials.astro"
+import LinkButton from "@/components/LinkButton.astro"
+import Card from "@/components/Card.astro"
+import Hr from "@/components/Hr.astro"
+import getSortedPosts from "@/utils/getSortedPosts"
+import IconRss from "@/assets/icons/IconRss.svg"
+import IconArrowRight from "@/assets/icons/IconArrowRight.svg"
+import { SITE } from "@/config"
+import { SOCIALS } from "@/constants"
 
-const posts = await getCollection("blog");
+const posts = await getCollection("blog")
 
-const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const sortedPosts = getSortedPosts(posts)
+const featuredPosts = sortedPosts.filter(({ data }) => data.featured)
+const recentPosts = sortedPosts.filter(({ data }) => !data.featured)
 ---
 
 <Layout>
   <Header />
   <main id="main-content" data-layout="index">
     <section id="hero" class="pt-8 pb-6">
-      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
-        Greetings!
-      </h1>
+      <p class="eyebrow">Personal notes / Tokyo</p>
+      <h1 class="my-4 block w-full text-3xl font-bold sm:my-6 sm:text-5xl">Greetings</h1>
       <a
         target="_blank"
         href="/rss.xml"
@@ -34,15 +33,14 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
         aria-label="rss feed"
         title="RSS Feed"
       >
-        <IconRss
-          width={20}
-          height={20}
-          class="scale-125 stroke-accent stroke-3 rtl:-rotate-90"
-        />
+        <IconRss width={20} height={20} class="stroke-accent scale-125 stroke-3 rtl:-rotate-90" />
         <span class="sr-only">RSS Feed</span>
       </a>
 
-      <p>This is a place where I share technical and fun stuff.</p>
+      <p>
+        A personal archive of technical experiments, games, hardware, and other things worth
+        remembering.
+      </p>
       {
         // only display if at least one social link is enabled
         SOCIALS.length > 0 && (
@@ -61,7 +59,7 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
         <>
           <section id="featured" class="pt-12 pb-6">
             <h2 class="text-2xl font-semibold tracking-wide">Featured</h2>
-            <ul>
+            <ul class="post-grid">
               {featuredPosts.map(data => (
                 <Card variant="h3" {...data} />
               ))}
@@ -76,10 +74,9 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
       recentPosts.length > 0 && (
         <section id="recent-posts" class="pt-12 pb-6">
           <h2 class="text-2xl font-semibold tracking-wide">Recent Posts</h2>
-          <ul>
+          <ul class="post-grid">
             {recentPosts.map(
-              (data, index) =>
-                index < SITE.postPerIndex && <Card variant="h3" {...data} />
+              (data, index) => index < SITE.postPerIndex && <Card variant="h3" {...data} />
             )}
           </ul>
         </section>
@@ -98,10 +95,9 @@ const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
 <script>
   document.addEventListener("astro:page-load", () => {
-    const indexLayout = (document.querySelector("#main-content") as HTMLElement)
-      ?.dataset?.layout;
+    const indexLayout = (document.querySelector("#main-content") as HTMLElement)?.dataset?.layout
     if (indexLayout) {
-      sessionStorage.setItem("backUrl", "/");
+      sessionStorage.setItem("backUrl", "/")
     }
-  });
+  })
 </script>
