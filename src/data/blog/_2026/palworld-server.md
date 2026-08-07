@@ -2,9 +2,9 @@
 title: Palworld Dedicated Server Deployment
 description: Palworld dedicated server and co-op saves convertion. 
 pubDatetime: 2026-07-19
-modDatetime: 2026-07-19
+modDatetime: 2026-08-08
 tags:
-  - Game
+  - Gaming
 ---
 
 Palworld document:

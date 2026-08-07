@@ -2,8 +2,29 @@
 @import "tailwindcss";
 @import "./typography.css";
 
+@font-face {
+  /* Use Andada Pro medium as the site's regular weight. */
+  font-family: "Andada Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/andadapro/v26/HhyEU5Qi9-SuOEhPe4LtKoVCuWGURPcg3DP7BY8c.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Andada Pro";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://fonts.gstatic.com/s/andadapro/v26/HhyGU5Qi9-SuOEhPe4LtAIxwRrn9L22O2yYBRlVfHrg.ttf")
+    format("truetype");
+}
+
 @theme {
-  --font-serif: "Literata", "Noto Sans SC", Georgia, "Times New Roman", serif;
+  --font-serif:
+    "Andada Pro", "Noto Sans SC", "Iowan Old Style", "Palatino Linotype", "Book Antiqua",
+    "Baskerville", Georgia, Cambria, "Times New Roman", serif;
   --font-mono:
     "Google Sans Code", "Noto Sans SC", "Microsoft YaHei", "Yu Gothic", "ui-sans-serif",
     "system-ui", "sans-serif", "apple color emoji", "segoe ui emoji", "segoe ui symbol",
@@ -16,7 +37,7 @@
 html[data-theme="light"] {
   --background: #f8f7f3;
   --foreground: #20272b;
-  --accent: #d95f3f;
+  --accent: #3448a8;
   --muted: #e8e9e5;
   --border: #b9bdb8;
 }
@@ -24,7 +45,7 @@ html[data-theme="light"] {
 html[data-theme="dark"] {
   --background: #202629;
   --foreground: #e7e7e7;
-  --accent: #d88970;
+  --accent: #8290ff;
   --muted: #30383c;
   --border: #4a5559;
 }
@@ -44,10 +65,10 @@ html[data-theme="dark"] {
     scrollbar-color: var(--color-muted) transparent;
   }
   html {
-    font-size: 16px;
+    font-size: 17px;
     background-color: var(--background);
     @variant sm {
-      font-size: 16px;
+      font-size: 17px;
     }
     @apply overflow-y-scroll scroll-smooth;
   }
@@ -75,13 +96,12 @@ html[data-theme="dark"] {
 }
 
 .active-nav {
-  @apply text-accent underline decoration-2 underline-offset-4;
+  @apply text-accent underline decoration-2 underline-offset-6;
 }
 
 nav,
 button,
-footer,
-.eyebrow {
+footer {
   font-family: var(--font-mono);
 }
 
@@ -94,22 +114,64 @@ code {
   font-family: var(--font-mono);
 }
 
-.eyebrow {
-  @apply font-mono text-xs font-bold tracking-widest text-accent uppercase;
+strong,
+b {
+  font-weight: 800;
 }
 
-#hero {
-  padding-block: 3rem 2rem;
+.tags-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.tags-grid li {
+  margin: 0;
+}
+
+.tags-grid a {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  align-items: center;
+  background: var(--accent);
+  color: var(--background);
+  font-size: 0.9em;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  transition:
+    box-shadow 150ms ease,
+    transform 150ms ease;
+}
+
+.tags-grid a span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tags-grid a:hover {
+  top: 0;
+  color: var(--background);
+  box-shadow: -0.5rem 0.5rem 0 #c22e3f;
+  transform: translate(0.5rem, -0.5rem);
+}
+
+@media (max-width: 640px) {
+  .tags-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 #hero h1 {
   max-width: none;
+  color: var(--accent);
   font-size: clamp(2.5rem, 7vw, 5rem);
   line-height: 1;
   letter-spacing: -0.06em;
 }
 
-#hero p:not(.eyebrow) {
+#hero p {
   max-width: none;
   font-size: 1.1rem;
   line-height: 1.8;
@@ -118,10 +180,10 @@ code {
 #featured h2,
 #recent-posts h2 {
   margin-bottom: 1.5rem;
-  color: var(--foreground);
+  color: var(--accent);
   font-family: var(--font-serif);
   font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.03em;
 }
 
@@ -187,14 +249,14 @@ code {
 
 .archive-year__label span {
   font-size: 1.75rem;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .archive-year__label b,
 .archive-month b {
   color: var(--accent);
   font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
@@ -209,7 +271,7 @@ code {
 
 .archive-month span {
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
 }
 
@@ -232,7 +294,7 @@ code {
 .post-card__body p:last-child {
   margin: 0;
   line-height: 1.7;
-  opacity: 0.78;
+  opacity: 0.9;
 }
 
 @media (max-width: 640px) {
@@ -242,9 +304,6 @@ code {
   }
   #top-nav-wrap {
     padding: 0.75rem;
-  }
-  #hero {
-    padding-block: 2rem 1.25rem;
   }
   #featured,
   #recent-posts {
@@ -289,13 +348,13 @@ code {
 }
 
 [data-callout="warning"] {
-  --rc-color-light: var(--callout-warning-color-light, #9a6700);
-  --rc-color-dark: var(--callout-warning-color-dark, #d29922);
+  --rc-color-light: var(--callout-warning-color-light, #c22e3f);
+  --rc-color-dark: var(--callout-warning-color-dark, #ff7180);
 }
 
 [data-callout="caution"] {
-  --rc-color-light: var(--callout-caution-color-light, #d1242f);
-  --rc-color-dark: var(--callout-caution-color-dark, #d1242f);
+  --rc-color-light: var(--callout-caution-color-light, #c22e3f);
+  --rc-color-dark: var(--callout-caution-color-dark, #ff7180);
 }
 
 .callout {

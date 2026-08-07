@@ -11,7 +11,10 @@
     h1,
     h2,
     h3,
-    h4,
+    h4 {
+      @apply text-accent mb-3;
+    }
+
     th {
       @apply text-foreground mb-3;
     }
@@ -31,7 +34,7 @@
     }
 
     a {
-      @apply text-foreground hover:text-accent break-words decoration-dashed underline-offset-4 focus-visible:no-underline;
+      @apply text-foreground hover:text-accent break-words decoration-accent decoration-2 underline-offset-6 focus-visible:no-underline;
     }
 
     ul {
@@ -96,11 +99,13 @@
 
   /* ===== Code Blocks & Syntax Highlighting ===== */
   .astro-code {
+    font-size: 0.8em;
     @apply outline-border flex border bg-(--shiki-light-bg) text-(--shiki-light) [&_span]:text-(--shiki-light);
   }
 
   html[data-theme="dark"] .astro-code {
     @apply bg-(--shiki-dark-bg) text-(--shiki-dark) [&_span]:text-(--shiki-dark);
+    background-color: color-mix(in srgb, var(--background) 88%, white);
   }
 
   /* Styles for Shiki transformers */
