@@ -1,11 +1,11 @@
 ---
 title: Saving GCP Log Storage Cost Using Log Router
 description: GCP log storage is expensive
-pubDatetime: 2026-08-07
-modDatetime: 2026-08-11
+pubDatetime: 2026-08-14
+modDatetime: 2026-08-14
 tags:
   - GCP
-draft: true
+draft: false
 ---
 
 Recently learned that GCP log storage is **EXPENSIVE** 😱
