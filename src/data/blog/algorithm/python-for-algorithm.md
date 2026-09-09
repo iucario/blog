@@ -1,7 +1,7 @@
 ---
 title: Python For Algorithm
 pubDatetime: 2025-09-03
-modDatetime: 2025-09-03
+modDatetime: 2026-09-09
 draft: false
 description: Must know Python tools for algorithm
 tags:
@@ -45,9 +45,14 @@ chr(97) == 'a'
 Cache
 
 ```py
+import functools
 @functools.cache
 def dp(x, y):
+  pass
+dp.cache_clear() # clear space
 ```
+
+Example question: <https://leetcode.com/problems/best-time-to-buy-and-sell-stock-v/>
 
 Bit
 
