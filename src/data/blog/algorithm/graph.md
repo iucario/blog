@@ -1,7 +1,8 @@
 ---
-title: Graph
+title: Graph Algorithms
+slug: graph-algorithms
 pubDatetime: 2025-08-23
-modDatetime: 2025-08-29
+modDatetime: 2026-09-14
 draft: false
 description: Notes of graph algorithms and applications
 tags:
@@ -32,6 +33,8 @@ def union(a, b):
     pa = find(a)
     pb = find(b)
     parent[pb] = pa
+
+root_num = len(set(find(x) for x in parent))
 ```
 
 Time complexity for find and union is tree height. Construction is `O(N)`.
@@ -82,7 +85,7 @@ def findOrder(self, num: int, prerequisites: List[List[int]]) -> List[int]:
     return path
 ```
 
-BFS one is also called Kahn's algorithm.
+BFS one is also called Kahn's algorithm. A variant is [cycle detection](#cycle-detection).
 
 1. Starts from zero in-degree nodes, which are nodes that are required by zero nodes
 2. Pop zero in-degree node from queue and append to `path`
@@ -102,6 +105,10 @@ Prim's algorithm
 - Start with any vertex, then add edges to it. Always take the minimum weight edge.
 - Time: `O(E log(E))`. Space `E`
 
+1. A min heap for available edges to unconnected nodes. Initialize `h = [(0, 0)]`
+2. While heap not empty. Pop node.
+3. For each new edges and next node, push to heap `(cost, next)`
+
 Kruskal's algorithm
 
 - Start with minimum weight edge. Add edge that does not form a cycle. Stop after V-1 edges have been taken.
@@ -112,6 +119,24 @@ Kruskal's algorithm
 3. For edge in the list
     1. if not `find(u, v)`, which means the edge won't create a cycle
     2. `union(u, v)`
+
+### Cycle Detection
+
+Keep removing nodes with 1 in-degree. If there are nodes left, there is a cycle.
+
+```py
+adj = defaultdict(set)
+que = deque([i for i in range(n) if len(adj[i]) == 1]) # A que of nodes with 1 in-degree
+removed = set()
+while que:
+    i = que.popleft()
+    removed.add(i)
+    for j in adj[i]:
+        adj[j].discard(i)
+        if len(adj[j]) == 1:
+            que.append(j)
+cycle = [i for i in range(n) if i not in removed]
+```
 
 ## Shortest Path
 
@@ -234,6 +259,9 @@ def findItinerary(self, tickets: List[List[str]]) -> List[str]:
 Complexity: Time `O(V + E)`
 
 ## Leetcode
+
+BFS\
+<https://leetcode.com/problems/possible-bipartition/description/>
 
 Number of sub-graphs / connected components\
 <https://leetcode.com/problems/number-of-provinces/>

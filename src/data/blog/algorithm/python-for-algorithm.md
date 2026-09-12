@@ -1,7 +1,7 @@
 ---
 title: Python For Algorithm
 pubDatetime: 2025-09-03
-modDatetime: 2026-09-09
+modDatetime: 2026-09-12
 draft: false
 description: Must know Python tools for algorithm
 tags:
@@ -26,6 +26,22 @@ smallest = heapq.heappop(heap)
 smallest = heapq.heappushpop(heap, item) # more efficient than separated
 heapq.heapify(x) # inplace
 heapq.nlargest(k, nums) # a list of k largest numbers
+```
+
+Queue, stack
+
+```py
+que = deque([i])
+while que:
+  x = que.popleft()
+  for j in adj[x]:
+    que.append(j)
+
+st = []
+for x in li:
+  while st and st[-1] > x:
+    st.pop()
+  st.append(x)
 ```
 
 Sort by custom key
@@ -65,6 +81,9 @@ x.bit_count()
 ```
 
 Bisect
+
+<https://docs.python.org/3/library/bisect.html>
+
 `bisect.bisect_right()` is the default `bisect.bisect()`\
 It inserts at a position which is _after_ all the existence of `x`\
 `bisect.bisect_left()` insertion point is before any existence of `x`
@@ -72,8 +91,11 @@ It inserts at a position which is _after_ all the existence of `x`\
 ```py
 import bisect
 l = [0, 1, 1, 5]
-bisect.bisect_left(l, 1) == 1
-bisect.bisect_right(l, 1) == 3
+bisect.bisect_left(l, 1, lo=0, hi=len(l)) == 1
+bisect.bisect_right(l, 1, lo=0, hi=len(l)) == 3
+
+l2 = [(0, 1), (2, 4), (2, 7), (7, 8)]
+bisect.bisect_left(l2, (2,)) == 1
 ```
 
 Insort. Similar to bisect but slower because it inserts elements.

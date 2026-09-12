@@ -1,7 +1,8 @@
 ---
 title: Sorting Algorithms
+slug: sorting-algorithms
 pubDatetime: 2025-09-07
-modDatetime: 2025-09-10
+modDatetime: 2026-09-12
 draft: false
 description: Sorting algorithms
 tags:
