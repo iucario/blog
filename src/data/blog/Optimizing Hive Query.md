@@ -2,7 +2,7 @@
 title: Optimizing Hive Query
 pubDatetime: 2025-08-08
 modDatetime: 2025-08-08
-featured: false
+featured: true
 description: Too many CTEs causes performance issue, which makes the Spark job hanging. How it can be optimized using CASE WHEN
 tags:
   - SQL
