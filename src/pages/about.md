@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/AboutLayout.astro
 title: "About"
-modDatetime: 2026-08-08
+modDatetime: 2026-11-08
 ---
 
 Hi! 👋
@@ -17,8 +17,9 @@ INTJ.
 
 ## Fun Facts
 
+- Recently started writing my Linux book in Chinese: <https://reboot-as-linux-pro.kanigo.workers.dev/>
 - I can recognize programming fonts at a glance.
-- I play all kinds of video games. Recently exploring a new genre: fighting game.
+- I play all kinds of video games.
 - I have collected a dozen of keyboards, mechanical and electro-capacitive.
 - I can instantly tell when someone's using AirPods Pro as their mic in a virtual meeting—because those microphones are just that bad.
 - I'm keeping(?) a streak of LeetCode daily questions. Keeps the brain from getting rusty.
