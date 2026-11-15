@@ -3,7 +3,7 @@ title: Debugging 5-Second Latency Spikes in GKE and Why It Was DNS
 slug: latency-investigation-gke-dns-keep-alive
 description: How I investigated a mysterious 5-second P99 latency spike in our Ruby on Rails BFF on GKE, and how missing Keep-Alive turned a brief DNS glitch into an incident.
 pubDatetime: 2026-11-08
-modDatetime: 2026-11-08
+modDatetime: 2026-11-15
 tags:
   - Ruby
   - Kubernetes
@@ -51,6 +51,9 @@ Pod count, CPU, and memory usage remained flat. In addition, no new application 
 If downstream was fast and the nodes were not overloaded, the problem was definitely inside our Rails BFF.
 
 ## It Is Always DNS
+
+>[!TIP]
+> Or maybe TCP SYN
 
 This BFF app is quite legacy, and its logging and observability are really poor.
 Based on limited information, let us investigate why so many requests suffered delays over 4 or 5 seconds here.
